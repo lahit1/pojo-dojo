@@ -1,0 +1,10 @@
+It:
+LICENZA: Questo pacchetto di asset può essere utilizzato 
+sia in progetti gratuiti che commerciali. 
+È possibile modificarlo in base alle proprie esigenze, non è possibile rivenderlo o rimetterlo in commercio
+
+En:
+LICENCE:This asset pack can be used in both free and commercial projects.
+You can modify it to suit your own needs,it is not possible to resell it or put it back on the market
+
+all right reserved MassGame.
