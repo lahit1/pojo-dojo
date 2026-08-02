@@ -93,7 +93,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iyx0m"]
-height = 38.0
+radius = 4.0
+height = 20.0
 
 [node name="Character" type="CharacterBody2D" unique_id=732737096 node_paths=PackedStringArray("animation_sprite")]
 collision_layer = 2
@@ -101,10 +102,10 @@ script = ExtResource("1_errlg")
 animation_sprite = NodePath("Sprite12")
 
 [node name="Sprite12" type="AnimatedSprite2D" parent="." unique_id=385772695]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wlu85")
-animation = &"idle"
-frame_progress = 0.8555883
+animation = &"fall"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497814857]
-position = Vector2(0, 4)
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_iyx0m")
