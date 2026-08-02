@@ -17,8 +17,9 @@ func request_spawn(character: Node2D):
 	var spawn_point = world.spawn_points[spawn_point_index]
 	world.spawn_points.remove_at(spawn_point_index)
 
-	spawn_point.get_parent().add_child.call_deferred(char)
+	spawn_point.get_parent().add_child.call_deferred(character)
 	character.position = spawn_point.position
+	spawn_point.queue_free()
 
 	camera_aligner.char2 = camera_aligner.char1
 	camera_aligner.char1 = character
