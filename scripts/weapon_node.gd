@@ -8,9 +8,17 @@ extends Node2D
 @export var bullet_speed: float = 2000
 @export var bullet_scene: PackedScene
 @export var bullet_life_time: float = 2
+@export var bullet_cooldown: float = 0.1
+
+@export var magazine_capacity: int = 30
+@export var ammo_in_magazine: int = magazine_capacity
+@export var magazine_change_duration: float = 2
 
 var current_character: CharacterNode
 var direction = 1
+
+var bullet_cooldown_timer: Timer
+var magazine_change_timer: Timer
 
 func _ready() -> void:
 	body.contact_monitor = true
@@ -20,6 +28,21 @@ func _ready() -> void:
 			if body is CharacterNode and not (body as CharacterNode).current_weapon:
 				pickup.call_deferred(body)
 	)
+
+	bullet_cooldown_timer = Timer.new()
+	bullet_cooldown_timer.wait_time = bullet_cooldown
+	bullet_cooldown_timer.one_shot = true
+	add_child(bullet_cooldown_timer)
+
+	magazine_change_timer = Timer.new()
+	magazine_change_timer.wait_time = magazine_change_duration
+	magazine_change_timer.one_shot = true
+	magazine_change_timer.timeout.connect(
+		func():
+			ammo_in_magazine = magazine_capacity
+	)
+
+	add_child(magazine_change_timer)
 
 func pickup(character: CharacterNode):
 	if current_character != null || character.current_weapon != null: return
@@ -51,6 +74,12 @@ func drop():
 	current_character = null
 
 func shoot():
+	if !bullet_cooldown_timer.is_stopped() or not ammo_in_magazine: return
+	bullet_cooldown_timer.start()
+	ammo_in_magazine -= 1
+	if not ammo_in_magazine:
+		magazine_change_timer.start()
+
 	var bullet: RigidBody2D = bullet_scene.instantiate()
 	bullet.set_deferred("position", barrel.global_position - GameManager.current_world.global_position)
 	bullet.linear_velocity = bullet_speed * (ammo_director.global_position - barrel.global_position).normalized()

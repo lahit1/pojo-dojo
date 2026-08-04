@@ -17,8 +17,10 @@ script = ExtResource("2_8uh7m")
 body = NodePath("Handle/RigidBody2D")
 barrel = NodePath("Barrel")
 ammo_director = NodePath("AmmoDirector")
-weapon_throw_velocity_magnitude = null
 bullet_scene = ExtResource("2_ppyta")
+bullet_cooldown = 0.01
+ammo_in_magazine = 30
+magazine_change_duration = 0.5
 
 [node name="Handle" type="Node2D" parent="." unique_id=489809300]
 position = Vector2(7, -3)
