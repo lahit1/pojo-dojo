@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://77fxty1fp4nr"]
+
+[ext_resource type="Texture2D" uid="uid://chqm0qdgtbk2s" path="res://assets/Ranitayas Guns Pack (16+ pixelart guns)/Smgs/4smg04.png" id="2_6uqi0"]
+[ext_resource type="Script" uid="uid://cblosiplh7e6p" path="res://scripts/weapon_node.gd" id="2_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://c6mxoaef1obeq" path="res://scenes/weapons/4smg04/4smg04_ammo.tscn" id="2_ppyta"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mulmr"]
+friction = 0.5
+bounce = 0.25
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8l8er"]
+radius = 8.059753
+height = 38.0
+
+[node name="4SMG04" type="Node2D" unique_id=167506660 node_paths=PackedStringArray("body", "barrel", "ammo_director")]
+script = ExtResource("2_8uh7m")
+body = NodePath("Handle/RigidBody2D")
+barrel = NodePath("Barrel")
+ammo_director = NodePath("AmmoDirector")
+weapon_throw_velocity_magnitude = null
+bullet_scene = ExtResource("2_ppyta")
+
+[node name="Handle" type="Node2D" parent="." unique_id=489809300]
+position = Vector2(7, -3)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Handle" unique_id=1903152008]
+collision_layer = 2
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_mulmr")
+
+[node name="4Smg04" type="Sprite2D" parent="Handle/RigidBody2D" unique_id=1698984824]
+texture = ExtResource("2_6uqi0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Handle/RigidBody2D" unique_id=884942023]
+rotation = 1.6702236
+shape = SubResource("CapsuleShape2D_8l8er")
+
+[node name="Barrel" type="Marker2D" parent="." unique_id=1371696839]
+position = Vector2(24, -6)
+
+[node name="AmmoDirector" type="Marker2D" parent="." unique_id=159304120]
+position = Vector2(29, -6)

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://f08wpsux6j0c" path="res://scripts/camera_aligner.gd" id="1_yqjtg"]
 [ext_resource type="Script" uid="uid://bb6dniw1rxy3r" path="res://scripts/player_controller.gd" id="4_iywne"]
 [ext_resource type="Script" uid="uid://cgkc83vbio8s1" path="res://scripts/game_manager.gd" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://77fxty1fp4nr" path="res://scenes/weapons/4smg04/4smg04.tscn" id="6_p57ef"]
 
 [node name="Game" type="Node2D" unique_id=854883889 node_paths=PackedStringArray("character_spawner", "worlds_placeholder", "camera")]
 script = ExtResource("4_lbhrr")
@@ -21,12 +22,14 @@ metadata/_custom_type_script = "uid://boa6d3h4ia8aq"
 position = Vector2(3, -72)
 zoom = Vector2(3, 3)
 script = ExtResource("1_yqjtg")
-max_zoom = Vector2(6, 6)
-max_distance = 500.0
 smooth_speed = 15.0
 
 [node name="WorldPlaceHolder" type="Node" parent="." unique_id=1541284205]
 
-[node name="PlayerController" type="Node" parent="." unique_id=762324171]
+[node name="PlayerController" type="Node" parent="." unique_id=762324171 node_paths=PackedStringArray("camera")]
 script = ExtResource("4_iywne")
+camera = NodePath("../Camera2D")
 metadata/_custom_type_script = "uid://bb6dniw1rxy3r"
+
+[node name="RigidBody2D" parent="." unique_id=1929934816 instance=ExtResource("6_p57ef")]
+position = Vector2(38, -77)

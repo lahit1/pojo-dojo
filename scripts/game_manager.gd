@@ -5,9 +5,13 @@ extends Node
 @export var worlds_placeholder: Node
 @export var camera: Camera2D
 
-var current_world: WorldNode
+static var current_world: WorldNode
 
 func _ready() -> void:
+	if is_instance_valid(current_world):
+		current_world.queue_free()
+		current_world = null
+
 	set_world(preload("res://scenes/worlds/world.tscn").instantiate())
 
 	var char1 = Character.characters[Character.Type.C12].instantiate()

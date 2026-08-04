@@ -8,10 +8,10 @@ script = ExtResource("1_6e51n")
 spawn_points = [NodePath("Player1"), NodePath("Player2")]
 
 [node name="Player1" type="Marker2D" parent="." unique_id=1727891817]
-position = Vector2(-432, -133)
+position = Vector2(-261, -156)
 
 [node name="Player2" type="Marker2D" parent="." unique_id=533843078]
-position = Vector2(474, -128)
+position = Vector2(172, -154)
 
 [node name="BackDecoratives" type="TileMapLayer" parent="." unique_id=1723105316]
 tile_map_data = PackedByteArray("AAD1////AAABAAAAAAD6////AAACAAAAAAD/////AAAKAAEAAAD7////AAAEAAAAAAD///7/AAAKAAAAAAAAAP7/AAALAAAAAAAAAP//AAALAAEAAAA=")
@@ -22,6 +22,6 @@ tile_map_data = PackedByteArray("AAD7/wAAAAABAAEAAAD8/wAAAAABAAEAAAD9/wAAAAABAAE
 tile_set = ExtResource("2_mnksr")
 
 [node name="FrontDecoratives" type="TileMapLayer" parent="." unique_id=1283076307]
-z_index = 1
+z_index = 2
 tile_map_data = PackedByteArray("AAD2////AAADAAAAAAD+//7/AAAIAAAAAAD+////AAAIAAEAAAD///7/AAAJAAAAAAD/////AAAJAAEAAAA=")
 tile_set = ExtResource("2_mnksr")

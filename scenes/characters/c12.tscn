@@ -3,6 +3,81 @@
 [ext_resource type="Script" uid="uid://gr3cwc48phtw" path="res://scripts/character_body.gd" id="1_errlg"]
 [ext_resource type="Texture2D" uid="uid://df1gf0fg53mxx" path="res://assets/16_Character_Pack/12.png" id="2_rkhd4"]
 
+[sub_resource type="Animation" id="Animation_32jod"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPlaceholder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, 12)]
+}
+
+[sub_resource type="Animation" id="Animation_mo38i"]
+resource_name = "fall"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPlaceholder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_4ux1p"]
+resource_name = "idle"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPlaceholder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(11, 16), Vector2(11, 14), Vector2(11, 12), Vector2(11, 14)]
+}
+
+[sub_resource type="Animation" id="Animation_8xiic"]
+resource_name = "jump"
+
+[sub_resource type="Animation" id="Animation_y38d5"]
+resource_name = "walk"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPlaceholder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(11, 13), Vector2(10, 11), Vector2(9, 11), Vector2(11, 15)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mo38i"]
+_data = {
+&"RESET": SubResource("Animation_32jod"),
+&"fall": SubResource("Animation_mo38i"),
+&"idle": SubResource("Animation_4ux1p"),
+&"jump": SubResource("Animation_8xiic"),
+&"walk": SubResource("Animation_y38d5")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxys3"]
 atlas = ExtResource("2_rkhd4")
 region = Rect2(48, 0, 48, 48)
@@ -50,21 +125,21 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_45ncw")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_y6i5k")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6txfi")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ytp8h")
 }],
 "loop": 1,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -75,37 +150,52 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.3,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_md6kg")
 }, {
-"duration": 0.3,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_g6dpf")
 }, {
-"duration": 0.3,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3fpkp")
 }, {
-"duration": 0.3,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bvkw3")
 }],
 "loop": 1,
 "name": &"walk",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iyx0m"]
-radius = 4.0
-height = 20.0
+radius = 9.0
+height = 38.0
 
-[node name="Character" type="CharacterBody2D" unique_id=732737096 node_paths=PackedStringArray("animation_sprite")]
+[node name="Character" type="CharacterBody2D" unique_id=732737096 node_paths=PackedStringArray("animation_sprite", "node_animator", "drop_point", "weapon_place_holder")]
 collision_layer = 2
 script = ExtResource("1_errlg")
+speed = 400.0
 animation_sprite = NodePath("Sprite12")
+node_animator = NodePath("AnimationPlayer")
+drop_point = NodePath("WeaponPlaceholder/DropPoint")
+weapon_place_holder = NodePath("WeaponPlaceholder")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1079645765]
+libraries/ = SubResource("AnimationLibrary_mo38i")
+speed_scale = 2.0
 
 [node name="Sprite12" type="AnimatedSprite2D" parent="." unique_id=385772695]
-scale = Vector2(0.5, 0.5)
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_wlu85")
-animation = &"fall"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497814857]
-position = Vector2(0, 1)
+z_index = 1
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_iyx0m")
+
+[node name="WeaponPlaceholder" type="Marker2D" parent="." unique_id=1519278977]
+position = Vector2(11, 12)
+
+[node name="DropPoint" type="Marker2D" parent="WeaponPlaceholder" unique_id=764968492]
+position = Vector2(26, 0)
