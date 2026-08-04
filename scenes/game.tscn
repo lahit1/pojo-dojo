@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bb6dniw1rxy3r" path="res://scripts/player_controller.gd" id="4_iywne"]
 [ext_resource type="Script" uid="uid://cgkc83vbio8s1" path="res://scripts/game_manager.gd" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://77fxty1fp4nr" path="res://scenes/weapons/4smg04/4smg04.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://cvgvi40fdd61b" path="res://scenes/weapons/5Explosive05/5Explosive05.tscn" id="6_u5sy4"]
 
 [node name="Game" type="Node2D" unique_id=854883889 node_paths=PackedStringArray("character_spawner", "worlds_placeholder", "camera")]
 script = ExtResource("4_lbhrr")
@@ -33,3 +34,6 @@ metadata/_custom_type_script = "uid://bb6dniw1rxy3r"
 
 [node name="RigidBody2D" parent="." unique_id=1929934816 instance=ExtResource("6_p57ef")]
 position = Vector2(38, -77)
+
+[node name="4SMG04" parent="." unique_id=167506660 instance=ExtResource("6_u5sy4")]
+position = Vector2(-50, -78)
