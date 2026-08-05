@@ -89,7 +89,14 @@ func _update_animations() -> void:
 		if abs(velocity.x) < 10.0 and move_direction == 0:
 			_play_animation("idle")
 		else:
-			_play_animation("walk")
+			# Ateş ederken silahın baktığı yönün tersine mi gidiyor?
+			if is_shooting and current_weapon and weapon_place_holder and abs(velocity.x) > 10.0:
+				if sign(velocity.x) != sign(weapon_place_holder.scale.x):
+					_play_animation("reverse_walk")
+				else:
+					_play_animation("walk")
+			else:
+				_play_animation("walk")
 	else:
 		if velocity.y < 0:
 			_play_animation("jump")
