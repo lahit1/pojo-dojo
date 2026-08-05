@@ -37,4 +37,3 @@ position = Vector2(38, -77)
 
 [node name="4SMG04" parent="." unique_id=167506660 instance=ExtResource("6_u5sy4")]
 position = Vector2(-50, -78)
-weapon_throw_velocity_magnitude = 300.0

@@ -73,7 +73,7 @@ func drop():
 	current_character.current_weapon = null
 	current_character = null
 
-func shoot():
+func shoot(aim_direction: Vector2 = Vector2.ZERO):
 	if !bullet_cooldown_timer.is_stopped() or not ammo_in_magazine: return
 	bullet_cooldown_timer.start()
 	ammo_in_magazine -= 1
@@ -82,7 +82,16 @@ func shoot():
 
 	var bullet: RigidBody2D = bullet_scene.instantiate()
 	bullet.set_deferred("position", barrel.global_position - GameManager.current_world.global_position)
-	bullet.linear_velocity = bullet_speed * (ammo_director.global_position - barrel.global_position).normalized()
+	
+	# Hedef yön verildiyse onu kullan (lerp gecikmesinden bağımsız)
+	# Yoksa silahın mevcut fiziksel yönünü kullan (geriye uyumluluk)
+	var direction: Vector2
+	if aim_direction != Vector2.ZERO:
+		direction = aim_direction.normalized()
+	else:
+		direction = (ammo_director.global_position - barrel.global_position).normalized()
+	
+	bullet.linear_velocity = bullet_speed * direction
 	var timer: Timer = Timer.new()
 
 	timer.one_shot = true

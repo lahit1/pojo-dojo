@@ -175,10 +175,12 @@ height = 38.0
 collision_layer = 2
 script = ExtResource("1_errlg")
 speed = 400.0
+max_jumps = 2707
 animation_sprite = NodePath("Sprite12")
 node_animator = NodePath("AnimationPlayer")
 drop_point = NodePath("WeaponPlaceholder/DropPoint")
 weapon_place_holder = NodePath("WeaponPlaceholder")
+shooting_backwards_speed_multiplier = 0.25
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1079645765]
 libraries/ = SubResource("AnimationLibrary_mo38i")
