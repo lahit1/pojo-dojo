@@ -20,12 +20,19 @@ var direction = 1
 var bullet_cooldown_timer: Timer
 var magazine_change_timer: Timer
 
+var pickup_cooldown_timer: Timer
+@export var pickup_cooldown_duration: float = 0.35:
+	set(value):
+		if pickup_cooldown_timer:
+			pickup_cooldown_timer.wait_time = value
+			pickup_cooldown_duration = value
+
 func _ready() -> void:
 	body.contact_monitor = true
 	body.max_contacts_reported = 4
 	body.body_entered.connect(
 		func(body: Node):
-			if body is CharacterNode and not (body as CharacterNode).current_weapon:
+			if pickup_cooldown_timer.is_stopped() and body is CharacterNode and not (body as CharacterNode).current_weapon:
 				pickup.call_deferred(body)
 	)
 
@@ -44,7 +51,13 @@ func _ready() -> void:
 
 	add_child(magazine_change_timer)
 
+	pickup_cooldown_timer = Timer.new()
+	pickup_cooldown_timer.wait_time = pickup_cooldown_duration
+	pickup_cooldown_timer.one_shot = true
+	add_child(pickup_cooldown_timer)
+
 func pickup(character: CharacterNode):
+
 	if current_character != null || character.current_weapon != null: return
 	
 	get_parent().remove_child.call_deferred(self)
@@ -72,6 +85,8 @@ func drop():
 
 	current_character.current_weapon = null
 	current_character = null
+	
+	pickup_cooldown_timer.start()
 
 func shoot(aim_direction: Vector2 = Vector2.ZERO):
 	if !bullet_cooldown_timer.is_stopped() or not ammo_in_magazine: return
@@ -82,7 +97,7 @@ func shoot(aim_direction: Vector2 = Vector2.ZERO):
 
 	var bullet: RigidBody2D = bullet_scene.instantiate()
 	bullet.set_deferred("position", barrel.global_position - GameManager.current_world.global_position)
-	
+
 	# Hedef yön verildiyse onu kullan (lerp gecikmesinden bağımsız)
 	# Yoksa silahın mevcut fiziksel yönünü kullan (geriye uyumluluk)
 	var direction: Vector2
@@ -90,8 +105,9 @@ func shoot(aim_direction: Vector2 = Vector2.ZERO):
 		direction = aim_direction.normalized()
 	else:
 		direction = (ammo_director.global_position - barrel.global_position).normalized()
-	
+
 	bullet.linear_velocity = bullet_speed * direction
+
 	var timer: Timer = Timer.new()
 
 	timer.one_shot = true
