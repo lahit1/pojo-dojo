@@ -29,3 +29,8 @@ func set_world(world: WorldNode):
 	worlds_placeholder.add_child(current_world)
 	
 	character_spawner.world = current_world
+	camera.limit_left = current_world.camera_limit_left
+	camera.limit_top = current_world.camera_limit_top
+	camera.limit_right = current_world.camera_limit_right
+	camera.limit_bottom = current_world.camera_limit_bottom
+	
