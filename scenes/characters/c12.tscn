@@ -206,15 +206,32 @@ animations = [{
 radius = 9.0
 height = 38.0
 
-[node name="Character" type="CharacterBody2D" unique_id=732737096 node_paths=PackedStringArray("animation_sprite", "node_animator", "drop_point", "weapon_place_holder")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32jod"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32jod"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[node name="Character" type="CharacterBody2D" unique_id=732737096 node_paths=PackedStringArray("health_bar", "animation_sprite", "node_animator", "drop_point", "weapon_place_holder", "melee_shapecast") groups=["damagable", "throwable"]]
 collision_layer = 2
 script = ExtResource("1_errlg")
+health_bar = NodePath("ProgressBar")
 speed = 400.0
 animation_sprite = NodePath("Sprite12")
 node_animator = NodePath("AnimationPlayer")
 drop_point = NodePath("WeaponPlaceholder/DropPoint")
 weapon_place_holder = NodePath("WeaponPlaceholder")
+mass = 80.0
 shooting_backwards_speed_multiplier = 0.3
+melee_shapecast = NodePath("ShapeCast2D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1079645765]
 libraries/ = SubResource("AnimationLibrary_mo38i")
@@ -235,3 +252,25 @@ position = Vector2(11, 12)
 
 [node name="DropPoint" type="Marker2D" parent="WeaponPlaceholder" unique_id=764968492]
 position = Vector2(26, 0)
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=1056539973]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_32jod")
+target_position = Vector2(30, 0)
+max_results = 8
+collision_mask = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1108574482]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_32jod")
+max_value = 200.0
+value = 200.0
+show_percentage = false

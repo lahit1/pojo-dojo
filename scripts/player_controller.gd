@@ -9,6 +9,7 @@ var character: CharacterNode
 @export var right_movement_action: StringName = "move_right"
 @export var jump_movement_action: StringName = "jump"
 @export var drop_weapon_action: StringName = "drop"
+@export var melee_attack_action: StringName = "melee_attack"
 @export var shoot_weapon_action: StringName = "shoot"
 
 # --- YENİ: Mouse pozisyonunu _process'te cache'le, _physics_process'te kullan ---
@@ -39,6 +40,9 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed(drop_weapon_action):
 		character.drop_weapon()
+
+	if Input.is_action_just_pressed("melee_attack"):
+		character.attack_melee()
 	
 	# Cache'lenmiş mouse pozisyonunu kullan (viewport null hatası olmaz)
 	if is_shooting or not is_moving:

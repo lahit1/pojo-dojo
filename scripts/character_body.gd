@@ -1,6 +1,23 @@
 class_name CharacterNode
 extends CharacterBody2D
 
+
+@export var health_bar: ProgressBar
+var initial_max_health: float:
+	set(val):
+		initial_max_health = val
+		health_bar.max_value = val
+	get():
+		return health_bar.max_value
+
+var health: float:
+	set(val):
+		health = val
+		health_bar.value = val
+		health_bar.visible = false if initial_max_health == health else true
+	get():
+		return health_bar.value
+
 @export var speed: float = 300.0
 @export var acceleration: float = 12.0
 @export var friction: float = 15.0
@@ -28,8 +45,19 @@ var is_shooting: bool = false
 @export var scale_flip_deadzone: float = 5.0
 @export_range(0.0, 180.0, 0.1, "suffix:°") var max_weapon_angle: float = 45.0
 
+@export_group("Melee", "melee")
+@export var melee_shapecast: ShapeCast2D
+@export var melee_damage_power_max: float = 50
+@export var melee_damage_power_min: float = 20
+@export_range(0.0, 100000.0, 1.0, "suffix:N") var melee_impulse: float = 50000
+@export_range(0.0, 1.0, 0.1) var melee_up_ratio: float = 0.175
+
 # Mermi yönü için hesaplanan hedef yön (lerp'ten bağımsız)
 var _current_aim_direction: Vector2 = Vector2.RIGHT
+
+func _ready() -> void:
+	health_bar.visible = false
+	pass
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -123,6 +151,9 @@ func shoot():
 # ============================================
 
 func aim_weapon_at(target_global_pos: Vector2, delta: float) -> void:
+	if melee_shapecast:
+		melee_shapecast.look_at(target_global_pos)
+
 	if not current_weapon or not weapon_place_holder:
 		return
 	
@@ -185,3 +216,34 @@ func reset_weapon_rotation(delta: float) -> void:
 		_current_aim_direction = Vector2.RIGHT
 	elif move_direction < -0.01:
 		_current_aim_direction = Vector2.LEFT
+
+func attack_melee():
+	if not melee_shapecast: return
+
+	melee_shapecast.force_shapecast_update()
+
+	var count = melee_shapecast.get_collision_count()
+	var hit_this_frame: Array = []
+
+	for i in range(count):
+		var collider := melee_shapecast.get_collider(i)
+		if collider != self and not collider in hit_this_frame:
+			if collider.is_in_group("damagable"):
+				hit_this_frame.append(collider)
+				collider.take_damage((melee_damage_power_max - melee_damage_power_min) * randf() + melee_damage_power_min)
+				#var hit_point = melee_shapecast.get_collision_point(i)
+			if collider.is_in_group("throwable"):
+				var direction: Vector2 = (collider.global_position - global_position).normalized()
+				if direction.x < 0:
+					direction = direction.rotated(PI / 2 * melee_up_ratio) 
+				elif direction.y > 0:
+					direction = direction.rotated(-PI / 2 * melee_up_ratio) 
+
+				collider.apply_external_impulse(
+					direction * \
+					melee_impulse \
+					+ velocity * mass
+				)
+
+func take_damage(val):
+	health -= val
