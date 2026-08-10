@@ -225,10 +225,13 @@ func attack_melee() -> void:
 
 	for i in range(count):
 		var collider := melee_shapecast.get_collider(i)
+		var collision_point = melee_shapecast.get_collision_point(i)
+
 		if collider != self and not collider in hit_this_frame:
 			if collider.is_in_group("damagable") and collider.has_method("take_damage"):
 				hit_this_frame.append(collider)
-				collider.take_damage(randf_range(melee_damage_power_min, melee_damage_power_max))
+				var damage := randf_range(melee_damage_power_min, melee_damage_power_max)
+				collider.take_damage(damage)
 
 			if collider.is_in_group("throwable") and collider.has_method("apply_external_impulse"):
 				var direction: Vector2 = (collider.global_position - global_position).normalized()
@@ -243,6 +246,10 @@ func attack_melee() -> void:
 
 func take_damage(val: float) -> void:
 	if health < val:
+		val = health
 		health = 0
 	else:
 		health -= val
+
+	if val:
+		GameManager.current_game.spawn_hit_score(val, melee_damage_power_min, melee_damage_power_max, global_position)

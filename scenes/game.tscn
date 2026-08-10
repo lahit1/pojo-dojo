@@ -2,16 +2,24 @@
 
 [ext_resource type="Script" uid="uid://boa6d3h4ia8aq" path="res://scripts/character_spawner.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://f08wpsux6j0c" path="res://scripts/camera_aligner.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://5x8cb8k1dqxh" path="res://scenes/hit_score_indicator.tscn" id="2_u5sy4"]
 [ext_resource type="Script" uid="uid://bb6dniw1rxy3r" path="res://scripts/player_controller.gd" id="4_iywne"]
 [ext_resource type="Script" uid="uid://cgkc83vbio8s1" path="res://scripts/game_manager.gd" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://77fxty1fp4nr" path="res://scenes/weapons/4smg04/4smg04.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cvgvi40fdd61b" path="res://scenes/weapons/5Explosive05/5Explosive05.tscn" id="6_u5sy4"]
 
-[node name="Game" type="Node2D" unique_id=854883889 node_paths=PackedStringArray("character_spawner", "worlds_placeholder", "camera")]
+[sub_resource type="Gradient" id="Gradient_32jod"]
+colors = PackedColorArray(0.33333334, 0.68235296, 0.3019608, 1, 1, 0, 0, 1)
+
+[node name="Game" type="Node2D" unique_id=854883889 node_paths=PackedStringArray("character_spawner", "worlds_placeholder", "camera", "hit_score_placeholder")]
 script = ExtResource("4_lbhrr")
 character_spawner = NodePath("CharacterSpawner")
 worlds_placeholder = NodePath("WorldPlaceHolder")
 camera = NodePath("Camera2D")
+hit_score_placeholder = NodePath("HitScoreIndicatorsPlaceholder")
+hit_score_indicator_scene = ExtResource("2_u5sy4")
+hit_score_indicator_gradient = SubResource("Gradient_32jod")
+hit_score_indicator_rotation_radius_degrees = 60.0
 
 [node name="CharacterSpawner" type="Node" parent="." unique_id=1871654956 node_paths=PackedStringArray("camera_aligner", "player_controller1")]
 script = ExtResource("1_lnu2h")
@@ -37,3 +45,6 @@ position = Vector2(38, -77)
 
 [node name="4SMG04" parent="." unique_id=167506660 instance=ExtResource("6_u5sy4")]
 position = Vector2(-50, -78)
+
+[node name="HitScoreIndicatorsPlaceholder" type="Node2D" parent="." unique_id=831993325]
+z_index = 4

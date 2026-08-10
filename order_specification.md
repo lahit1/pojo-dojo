@@ -5,6 +5,7 @@
 - Decorative layer on
 -- behind: z=0
 -- on above: z=2
+-- HitScoreIndicatorsPlaceholder: z = 4
 
 ## Character
 - Characters
