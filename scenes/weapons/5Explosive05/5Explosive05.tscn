@@ -12,14 +12,15 @@ bounce = 0.25
 radius = 7.0
 height = 26.000044
 
-[node name="4SMG04" type="Node2D" unique_id=167506660 node_paths=PackedStringArray("body", "barrel", "ammo_director")]
+[node name="5Explosive05" type="Node2D" unique_id=167506660 node_paths=PackedStringArray("body", "barrel", "ammo_director")]
 script = ExtResource("1_nt4dx")
 body = NodePath("Handle/RigidBody2D")
 barrel = NodePath("Barrel")
 ammo_director = NodePath("AmmoDirector")
 bullet_scene = ExtResource("2_4r1b6")
-bullet_cooldown = 0.5
+bullet_cooldown = 2.0
 magazine_capacity = 4
+magazine_change_duration = 3.0
 
 [node name="Handle" type="Node2D" parent="." unique_id=489809300]
 position = Vector2(-1, -6)

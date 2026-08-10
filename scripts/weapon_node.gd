@@ -96,6 +96,7 @@ func shoot(aim_direction: Vector2 = Vector2.ZERO):
 		magazine_change_timer.start()
 
 	var bullet: RigidBody2D = bullet_scene.instantiate()
+	bullet.character = current_character
 	bullet.set_deferred("position", barrel.global_position - GameManager.current_world.global_position)
 
 	# Hedef yön verildiyse onu kullan (lerp gecikmesinden bağımsız)

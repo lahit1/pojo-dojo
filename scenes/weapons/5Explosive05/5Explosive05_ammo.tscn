@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://cbl3tsa8nqd44"]
 
+[ext_resource type="Script" uid="uid://dvshciloai7si" path="res://scripts/bullet.gd" id="1_5fpda"]
 [ext_resource type="Texture2D" uid="uid://c54giu3bvh27s" path="res://icon.svg" id="1_yhx7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l8er"]
 size = Vector2(24, 24)
 
-[node name="RigidBody2D" type="RigidBody2D" unique_id=782321713]
-collision_layer = 2
+[node name="RigidBody2D" type="RigidBody2D" unique_id=782321713 node_paths=PackedStringArray("body")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_5fpda")
+body = NodePath(".")
+max_interaction_damage = 25.0
+min_interaction_damage = 20.0
+max_explosive_damage = 460.0
+min_explosive_damage = 410.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=2001375483]
 z_index = 3
