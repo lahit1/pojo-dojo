@@ -1,22 +1,24 @@
 class_name CharacterNode
 extends CharacterBody2D
 
+@export var health_bar: ProgressBar:
+	set(npb):
+		health_bar = npb
+		if is_inside_tree():
+			_update_health_bar()
 
-@export var health_bar: ProgressBar
-var initial_max_health: float:
+var max_health: float = 100.0:
 	set(val):
-		initial_max_health = val
-		health_bar.max_value = val
-	get():
-		return health_bar.max_value
+		max_health = val
+		if health_bar and is_node_ready():
+			health_bar.max_value = val
 
-var health: float:
+var health: float = 100.0:
 	set(val):
-		health = val
-		health_bar.value = val
-		health_bar.visible = false if initial_max_health == health else true
-	get():
-		return health_bar.value
+		health = clampf(val, 0.0, max_health)
+		if health_bar and is_node_ready():
+			health_bar.value = health
+			health_bar.visible = (health < max_health)
 
 @export var speed: float = 300.0
 @export var acceleration: float = 12.0
@@ -47,17 +49,22 @@ var is_shooting: bool = false
 
 @export_group("Melee", "melee")
 @export var melee_shapecast: ShapeCast2D
-@export var melee_damage_power_max: float = 50
-@export var melee_damage_power_min: float = 20
-@export_range(0.0, 100000.0, 1.0, "suffix:N") var melee_impulse: float = 50000
+@export var melee_damage_power_max: float = 50.0
+@export var melee_damage_power_min: float = 20.0
+@export_range(0.0, 100000.0, 1.0, "suffix:N") var melee_impulse: float = 50000.0
 @export_range(0.0, 1.0, 0.1) var melee_up_ratio: float = 0.175
 
-# Mermi yönü için hesaplanan hedef yön (lerp'ten bağımsız)
 var _current_aim_direction: Vector2 = Vector2.RIGHT
 
+
 func _ready() -> void:
-	health_bar.visible = false
-	pass
+	_update_health_bar()
+
+func _update_health_bar() -> void:
+	if health_bar:
+		health_bar.max_value = max_health
+		health_bar.value = health
+		health_bar.visible = (health < max_health)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -89,7 +96,8 @@ func _physics_process(delta: float) -> void:
 				weapon_place_holder.z_index = 1 if weapon_place_holder.scale.x < 0 else 0
 		else:
 			animation_sprite.flip_h = move_direction < 0
-			weapon_place_holder.z_index = 1 if move_direction < 0 else 0
+			if weapon_place_holder:
+				weapon_place_holder.z_index = 1 if move_direction < 0 else 0
 
 	_update_animations()
 
@@ -109,7 +117,7 @@ func jump() -> void:
 func apply_external_velocity(deltaV: Vector2) -> void:
 	velocity += deltaV
 
-func apply_external_impulse(momentum: Vector2):
+func apply_external_impulse(momentum: Vector2) -> void:
 	velocity += momentum / mass
 
 func _update_animations() -> void:
@@ -117,7 +125,6 @@ func _update_animations() -> void:
 		if abs(velocity.x) < 10.0 and move_direction == 0:
 			_play_animation("idle")
 		else:
-			# Ateş ederken silahın baktığı yönün tersine mi gidiyor?
 			if is_shooting and current_weapon and weapon_place_holder and abs(velocity.x) > 10.0:
 				if sign(velocity.x) != sign(weapon_place_holder.scale.x):
 					_play_animation("reverse_walk")
@@ -138,11 +145,11 @@ func _play_animation(anim_name: String) -> void:
 	if node_animator and node_animator.current_animation != anim_name:
 		node_animator.play(anim_name)
 
-func drop_weapon():
+func drop_weapon() -> void:
 	if not current_weapon: return
 	current_weapon.drop.call_deferred()
 
-func shoot():
+func shoot() -> void:
 	if current_weapon:
 		current_weapon.shoot(_current_aim_direction)
 
@@ -161,7 +168,6 @@ func aim_weapon_at(target_global_pos: Vector2, delta: float) -> void:
 	if not barrel:
 		return
 	
-	# Scale kararını holder'dan ver (barrel zıplamasın diye)
 	var to_mouse_holder := target_global_pos - weapon_place_holder.global_position
 	
 	if to_mouse_holder.x > scale_flip_deadzone:
@@ -169,21 +175,16 @@ func aim_weapon_at(target_global_pos: Vector2, delta: float) -> void:
 	elif to_mouse_holder.x < -scale_flip_deadzone:
 		weapon_place_holder.scale.x = -1.0
 	
-	# Barrel'den hedefe vektör
 	var barrel_pos := barrel.global_position
 	var to_target := target_global_pos - barrel_pos
 	var dist := to_target.length()
 	
-	# Mermi yönünü HER ZAMAN güncelle (deadzone'da bile)
-	# Böylece shoot() çağrıldığında en güncel yön kullanılır
 	if dist >= 0.01:
 		_current_aim_direction = to_target.normalized()
 	
-	# Deadzone: mouse çok yakınsa görsel rotasyonu değiştirme
 	if dist < min_aim_distance:
 		return
 	
-	# Görsel rotasyon hesabı
 	var target_global_angle := to_target.angle()
 	var parent_angle := (weapon_place_holder.get_parent() as Node2D).global_rotation
 	var base_angle := parent_angle
@@ -194,10 +195,8 @@ func aim_weapon_at(target_global_pos: Vector2, delta: float) -> void:
 	var max_angle_rad := deg_to_rad(max_weapon_angle)
 	var clamped_angle := clampf(local_angle, -max_angle_rad, max_angle_rad)
 	
-	# Yumuşatma (sadece görsel)
 	var t := clampf(weapon_rotation_smoothing * delta, 0.0, 1.0)
 	weapon_place_holder.rotation = lerp_angle(weapon_place_holder.rotation, clamped_angle, t)
-
 
 func reset_weapon_rotation(delta: float) -> void:
 	if not current_weapon or not weapon_place_holder:
@@ -211,13 +210,12 @@ func reset_weapon_rotation(delta: float) -> void:
 	var t := clampf(weapon_rotation_smoothing * delta, 0.0, 1.0)
 	weapon_place_holder.rotation = lerp_angle(weapon_place_holder.rotation, 0.0, t)
 	
-	# Hareket yönünde ateş edilebilir diye aim direction'ı güncelle
 	if move_direction > 0.01:
 		_current_aim_direction = Vector2.RIGHT
 	elif move_direction < -0.01:
 		_current_aim_direction = Vector2.LEFT
 
-func attack_melee():
+func attack_melee() -> void:
 	if not melee_shapecast: return
 
 	melee_shapecast.force_shapecast_update()
@@ -228,22 +226,23 @@ func attack_melee():
 	for i in range(count):
 		var collider := melee_shapecast.get_collider(i)
 		if collider != self and not collider in hit_this_frame:
-			if collider.is_in_group("damagable"):
+			if collider.is_in_group("damagable") and collider.has_method("take_damage"):
 				hit_this_frame.append(collider)
-				collider.take_damage((melee_damage_power_max - melee_damage_power_min) * randf() + melee_damage_power_min)
-				#var hit_point = melee_shapecast.get_collision_point(i)
-			if collider.is_in_group("throwable"):
+				collider.take_damage(randf_range(melee_damage_power_min, melee_damage_power_max))
+
+			if collider.is_in_group("throwable") and collider.has_method("apply_external_impulse"):
 				var direction: Vector2 = (collider.global_position - global_position).normalized()
-				if direction.x < 0:
-					direction = direction.rotated(PI / 2 * melee_up_ratio) 
-				elif direction.y > 0:
-					direction = direction.rotated(-PI / 2 * melee_up_ratio) 
+
+				# Vuruş açısını yukarı doğru eğimleme
+				var up_vector := Vector2.UP * melee_up_ratio
+				var final_direction := (direction + up_vector).normalized()
 
 				collider.apply_external_impulse(
-					direction * \
-					melee_impulse \
-					+ velocity * mass
+					final_direction * melee_impulse + velocity * mass
 				)
 
-func take_damage(val):
-	health -= val
+func take_damage(val: float) -> void:
+	if health < val:
+		health = 0
+	else:
+		health -= val
