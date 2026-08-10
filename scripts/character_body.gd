@@ -7,13 +7,13 @@ extends CharacterBody2D
 		if is_inside_tree():
 			_update_health_bar()
 
-var max_health: float = 100.0:
+@export var max_health: float = 100.0:
 	set(val):
 		max_health = val
 		if health_bar and is_node_ready():
 			health_bar.max_value = val
 
-var health: float = 100.0:
+@export var health: float = 100.0:
 	set(val):
 		health = clampf(val, 0.0, max_health)
 		if health_bar and is_node_ready():
