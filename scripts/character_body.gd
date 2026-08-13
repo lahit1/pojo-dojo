@@ -252,4 +252,4 @@ func take_damage(val: float) -> void:
 		health -= val
 
 	if val:
-		GameManager.current_game.spawn_hit_score(val, melee_damage_power_min, melee_damage_power_max, global_position)
+		GameManager.current_game.spawn_hit_score(self, val, max_health, global_position)
