@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://chqm0qdgtbk2s" path="res://assets/Ranitayas Guns Pack (16+ pixelart guns)/Smgs/4smg04.png" id="2_6uqi0"]
 [ext_resource type="Script" uid="uid://cblosiplh7e6p" path="res://scripts/weapon_node.gd" id="2_8uh7m"]
 [ext_resource type="PackedScene" uid="uid://c6mxoaef1obeq" path="res://scenes/weapons/4smg04/4smg04_ammo.tscn" id="2_ppyta"]
+[ext_resource type="PackedScene" uid="uid://bxx2m8j34vubf" path="res://scenes/aim_indicator.tscn" id="4_wed8t"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mulmr"]
 friction = 0.5
@@ -12,7 +13,7 @@ bounce = 0.25
 radius = 8.059753
 height = 38.0
 
-[node name="4SMG04" type="Node2D" unique_id=167506660 node_paths=PackedStringArray("body", "barrel", "ammo_director")]
+[node name="4SMG04" type="Node2D" unique_id=167506660 node_paths=PackedStringArray("body", "barrel", "ammo_director", "aim_indicator")]
 script = ExtResource("2_8uh7m")
 body = NodePath("Handle/RigidBody2D")
 barrel = NodePath("Barrel")
@@ -21,6 +22,7 @@ bullet_scene = ExtResource("2_ppyta")
 bullet_cooldown = 0.01
 ammo_in_magazine = 30
 magazine_change_duration = 0.5
+aim_indicator = NodePath("AmmoDirector/AimIndicator")
 
 [node name="Handle" type="Node2D" parent="." unique_id=489809300]
 position = Vector2(7, -3)
@@ -42,3 +44,5 @@ position = Vector2(24, -6)
 
 [node name="AmmoDirector" type="Marker2D" parent="." unique_id=159304120]
 position = Vector2(29, -6)
+
+[node name="AimIndicator" parent="AmmoDirector" unique_id=1607737127 instance=ExtResource("4_wed8t")]
