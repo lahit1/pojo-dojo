@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cvgvi40fdd61b"]
 
-[ext_resource type="Script" uid="uid://cblosiplh7e6p" path="res://scripts/weapon_node.gd" id="1_nt4dx"]
+[ext_resource type="Script" uid="uid://cblosiplh7e6p" path="res://scripts/game/weapon/weapon_node.gd" id="1_nt4dx"]
 [ext_resource type="PackedScene" uid="uid://cbl3tsa8nqd44" path="res://scenes/weapons/5Explosive05/5Explosive05_ammo.tscn" id="2_4r1b6"]
 [ext_resource type="Texture2D" uid="uid://b73f6f8v7jqgv" path="res://assets/Ranitayas Guns Pack (16+ pixelart guns)/Explosives/5Explosive05.png" id="3_j4wf0"]
 

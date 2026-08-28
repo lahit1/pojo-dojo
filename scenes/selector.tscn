@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://c4fi6f2ewlh4m"]
+
+[ext_resource type="Script" uid="uid://bed46nl5ioige" path="res://scripts/selector_scene.gd" id="1_wj04o"]
+
+[sub_resource type="Gradient" id="Gradient_ps1qd"]
+offsets = PackedFloat32Array(0.3, 0.7)
+colors = PackedColorArray(0.6690609, 0.31510863, 0.989222, 1, 0.41144866, 0.5972148, 0.9999955, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8l8er"]
+gradient = SubResource("Gradient_ps1qd")
+
+[node name="Node" type="Node" unique_id=1764238435 node_paths=PackedStringArray("player1", "player2")]
+process_mode = 4
+script = ExtResource("1_wj04o")
+player1 = NodePath("Control/PlayerPlaceholder1/AnimatedSprite2D")
+player2 = NodePath("Control/PlayerPlaceholder2/AnimatedSprite2D")
+
+[node name="Control" type="Control" parent="." unique_id=373841708]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Control" unique_id=1339015983]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_8l8er")
+
+[node name="PlayerPlaceholder1" type="Control" parent="Control" unique_id=1373221772]
+layout_mode = 1
+anchor_left = 0.3
+anchor_top = 0.4
+anchor_right = 0.3
+anchor_bottom = 0.4
+pivot_offset_ratio = Vector2(0.5, 0.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/PlayerPlaceholder1" unique_id=162917392]
+process_mode = 3
+scale = Vector2(4, 4)
+
+[node name="PlayerPlaceholder2" type="Control" parent="Control" unique_id=280136443]
+layout_mode = 1
+anchor_left = 0.7
+anchor_top = 0.4
+anchor_right = 0.7
+anchor_bottom = 0.4
+pivot_offset_ratio = Vector2(0.5, 0.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/PlayerPlaceholder2" unique_id=517022449]
+process_mode = 3
+scale = Vector2(4, 4)
+
+[node name="Control" type="Control" parent="Control" unique_id=176576010]
+layout_mode = 1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterSelector1" type="HBoxContainer" parent="Control/Control" unique_id=1318890324]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.5
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Prev" type="Button" parent="Control/Control/CharacterSelector1" unique_id=1584475309]
+layout_mode = 2
+text = "Önceki"
+
+[node name="Next" type="Button" parent="Control/Control/CharacterSelector1" unique_id=1732121451]
+layout_mode = 2
+text = "Sonraki"
+
+[node name="CharacterSelector2" type="HBoxContainer" parent="Control/Control" unique_id=201854094]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.9
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Prev" type="Button" parent="Control/Control/CharacterSelector2" unique_id=1865297665]
+layout_mode = 2
+text = "Önceki"
+
+[node name="Next" type="Button" parent="Control/Control/CharacterSelector2" unique_id=1316623087]
+layout_mode = 2
+text = "Sonraki"

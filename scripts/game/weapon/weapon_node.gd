@@ -14,6 +14,11 @@ extends Node2D
 @export var ammo_in_magazine: int = magazine_capacity
 @export var magazine_change_duration: float = 2
 
+@export var aim_indicator: Node2D:
+	set(value):
+		value.visible = true if current_character else false
+		aim_indicator = value
+
 var current_character: CharacterNode
 var direction = 1
 
@@ -57,9 +62,8 @@ func _ready() -> void:
 	add_child(pickup_cooldown_timer)
 
 func pickup(character: CharacterNode):
-
 	if current_character != null || character.current_weapon != null: return
-	
+
 	get_parent().remove_child.call_deferred(self)
 	character.weapon_place_holder.add_child.call_deferred(self)
 	character.current_weapon = self
@@ -71,6 +75,8 @@ func pickup(character: CharacterNode):
 	body.rotation = 0
 	position = Vector2.ZERO
 	rotation = 0
+	if aim_indicator:
+		aim_indicator.visible = true
 
 func drop():
 	if current_character == null || current_character.current_weapon != self: return
@@ -86,6 +92,9 @@ func drop():
 	current_character.current_weapon = null
 	current_character = null
 	
+	if aim_indicator:
+		aim_indicator.visible = false
+
 	pickup_cooldown_timer.start()
 
 func shoot(aim_direction: Vector2 = Vector2.ZERO):

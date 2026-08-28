@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://762ti02j6ecn"]
 
-[ext_resource type="Script" uid="uid://boa6d3h4ia8aq" path="res://scripts/character_spawner.gd" id="1_lnu2h"]
-[ext_resource type="Script" uid="uid://f08wpsux6j0c" path="res://scripts/camera_aligner.gd" id="1_yqjtg"]
+[ext_resource type="Script" uid="uid://boa6d3h4ia8aq" path="res://scripts/game/character_spawner.gd" id="1_lnu2h"]
+[ext_resource type="Script" uid="uid://f08wpsux6j0c" path="res://scripts/game/camera_aligner.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://5x8cb8k1dqxh" path="res://scenes/hit_score_indicator.tscn" id="2_u5sy4"]
-[ext_resource type="Script" uid="uid://bb6dniw1rxy3r" path="res://scripts/player_controller.gd" id="4_iywne"]
+[ext_resource type="Script" uid="uid://bb6dniw1rxy3r" path="res://scripts/game/player_controller.gd" id="4_iywne"]
 [ext_resource type="Script" uid="uid://cgkc83vbio8s1" path="res://scripts/game_manager.gd" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://77fxty1fp4nr" path="res://scenes/weapons/4smg04/4smg04.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cvgvi40fdd61b" path="res://scenes/weapons/5Explosive05/5Explosive05.tscn" id="6_u5sy4"]

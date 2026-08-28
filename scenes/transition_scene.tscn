@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cqb6qune7daaa"]
+
+[ext_resource type="Script" uid="uid://chjjm82ju5hwr" path="res://scripts/transition_scene.gd" id="1_cqi5c"]
+
+[node name="Node2D" type="Node2D" unique_id=1235773316 node_paths=PackedStringArray("scene_placeholder")]
+script = ExtResource("1_cqi5c")
+scene_placeholder = NodePath("Node2D")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1846560465]

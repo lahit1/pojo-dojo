@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://c6mxoaef1obeq"]
 
-[ext_resource type="Script" uid="uid://dvshciloai7si" path="res://scripts/bullet.gd" id="1_gst13"]
+[ext_resource type="Script" uid="uid://dvshciloai7si" path="res://scripts/game/bullet.gd" id="1_gst13"]
 [ext_resource type="Texture2D" uid="uid://c54giu3bvh27s" path="res://icon.svg" id="1_mulmr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l8er"]
 size = Vector2(6, 6)
 
-[node name="RigidBody2D" type="RigidBody2D" unique_id=782321713 node_paths=PackedStringArray("body")]
+[node name="RigidBody2D" type="RigidBody2D" unique_id=782321713 node_paths=PackedStringArray("body", "sprite")]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_gst13")
 body = NodePath(".")
+sprite = NodePath("Icon")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=2001375483]
 z_index = 3

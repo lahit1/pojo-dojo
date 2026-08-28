@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cbl3tsa8nqd44"]
 
-[ext_resource type="Script" uid="uid://dvshciloai7si" path="res://scripts/bullet.gd" id="1_5fpda"]
+[ext_resource type="Script" uid="uid://dvshciloai7si" path="res://scripts/game/bullet.gd" id="1_5fpda"]
 [ext_resource type="Texture2D" uid="uid://c54giu3bvh27s" path="res://icon.svg" id="1_yhx7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l8er"]
@@ -23,6 +23,7 @@ body = NodePath(".")
 sprite = NodePath("Icon")
 max_interaction_damage = 25.0
 min_interaction_damage = 20.0
+can_explode = true
 explosion_impulse = 100000.0
 explosion_particles = NodePath("GPUParticles2D")
 
