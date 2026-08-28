@@ -9,11 +9,15 @@ colors = PackedColorArray(0.6690609, 0.31510863, 0.989222, 1, 0.41144866, 0.5972
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8l8er"]
 gradient = SubResource("Gradient_ps1qd")
 
-[node name="Node" type="Node" unique_id=1764238435 node_paths=PackedStringArray("player1", "player2")]
+[node name="Node" type="Node" unique_id=1764238435 node_paths=PackedStringArray("player1", "player1_next_sprite_button", "player1_prev_sprite_button", "player2", "player2_next_sprite_button", "player2_prev_sprite_button")]
 process_mode = 4
 script = ExtResource("1_wj04o")
 player1 = NodePath("Control/PlayerPlaceholder1/AnimatedSprite2D")
+player1_next_sprite_button = NodePath("Control/Control/CharacterSelector1/Next")
+player1_prev_sprite_button = NodePath("Control/Control/CharacterSelector1/Prev")
 player2 = NodePath("Control/PlayerPlaceholder2/AnimatedSprite2D")
+player2_next_sprite_button = NodePath("Control/Control/CharacterSelector2/Next")
+player2_prev_sprite_button = NodePath("Control/Control/CharacterSelector2/Prev")
 
 [node name="Control" type="Control" parent="." unique_id=373841708]
 layout_mode = 3
@@ -57,6 +61,7 @@ metadata/_edit_use_anchors_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/PlayerPlaceholder2" unique_id=517022449]
 process_mode = 3
 scale = Vector2(4, 4)
+flip_h = true
 
 [node name="Control" type="Control" parent="Control" unique_id=176576010]
 layout_mode = 1
@@ -75,10 +80,12 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="Prev" type="Button" parent="Control/Control/CharacterSelector1" unique_id=1584475309]
+process_mode = 3
 layout_mode = 2
 text = "Önceki"
 
 [node name="Next" type="Button" parent="Control/Control/CharacterSelector1" unique_id=1732121451]
+process_mode = 3
 layout_mode = 2
 text = "Sonraki"
 
@@ -92,9 +99,11 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="Prev" type="Button" parent="Control/Control/CharacterSelector2" unique_id=1865297665]
+process_mode = 3
 layout_mode = 2
 text = "Önceki"
 
 [node name="Next" type="Button" parent="Control/Control/CharacterSelector2" unique_id=1316623087]
+process_mode = 3
 layout_mode = 2
 text = "Sonraki"
