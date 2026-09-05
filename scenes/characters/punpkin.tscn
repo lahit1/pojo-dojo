@@ -113,21 +113,15 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 6
 
-[node name="Character" type="CharacterBody2D" unique_id=732737096 node_paths=PackedStringArray("health_bar", "animation_sprite", "node_animator", "drop_point", "weapon_place_holder", "melee_shapecast") groups=["damagable", "shootable", "throwable"]]
+[node name="Character" type="CharacterBody2D" unique_id=732737096 node_paths=PackedStringArray("health_bar", "animation_sprite", "node_animator", "drop_point", "weapon_place_holder") groups=["damagable", "shootable", "throwable"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_ml8pd")
 health_bar = NodePath("ProgressBar")
-max_health = 3000.0
-health = 3000.0
-speed = 400.0
 animation_sprite = NodePath("Sprite12")
 node_animator = NodePath("AnimationPlayer")
 drop_point = NodePath("WeaponPlaceholder/DropPoint")
 weapon_place_holder = NodePath("WeaponPlaceholder")
-mass = 80.0
-shooting_backwards_speed_multiplier = 0.3
-melee_shapecast = NodePath("ShapeCast2D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1079645765]
 libraries/ = SubResource("AnimationLibrary_mo38i")

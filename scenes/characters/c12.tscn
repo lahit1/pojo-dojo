@@ -134,10 +134,15 @@ melee_shapecast = NodePath("ShapeCast2D")
 libraries/ = SubResource("AnimationLibrary_mo38i")
 speed_scale = 2.0
 
-[node name="Sprite12" type="AnimatedSprite2D" parent="." unique_id=385772695]
+[node name="Sprite12" type="AnimatedSprite2D" parent="." unique_id=385772695 node_paths=PackedStringArray("animation_sprite", "node_animator", "drop_point", "weapon_place_holder")]
 z_index = 1
 sprite_frames = ExtResource("2_32jod")
 animation = &"reverse_walk"
+script = ExtResource("1_errlg")
+animation_sprite = NodePath(".")
+node_animator = NodePath("../AnimationPlayer")
+drop_point = NodePath("../WeaponPlaceholder/DropPoint")
+weapon_place_holder = NodePath("../WeaponPlaceholder")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497814857]
 z_index = 1
