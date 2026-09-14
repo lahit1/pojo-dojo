@@ -7,6 +7,7 @@ var character: CharacterNode
 
 @export var max_interaction_damage: float = 80
 @export var min_interaction_damage: float = 45
+@export var sound_player: AudioStreamPlayer2D
 
 @export var can_explode: bool = false
 @export var max_explosive_damage: float = 2500
@@ -14,6 +15,7 @@ var character: CharacterNode
 @export var explosion_radius: float = 250
 @export var explosion_impulse: float = 10000
 @export var explosion_particles: GPUParticles2D
+@export var explosion_sound_player: AudioStreamPlayer2D
 var dead: bool = false
 
 func _ready() -> void:
@@ -68,6 +70,22 @@ func trigger_explosition() -> void:
 				end_func,
 				CONNECT_DEFERRED
 			)
+	if sound_player:
+		sound_player.play()
+		sound_player.reparent(GameManager.current_world, true)
+		sound_player.finished.connect(
+			func():
+				sound_player.reparent.call_deferred(null)
+				sound_player.queue_free()
+		)
+	if explosion_sound_player:
+		explosion_sound_player.play()
+		explosion_sound_player.reparent(GameManager.current_world, true)
+		explosion_sound_player.finished.connect(
+			func():
+				explosion_sound_player.reparent.call_deferred(null)
+				explosion_sound_player.queue_free()
+		)
 
 	for hit in results:
 		var collider = hit.collider
