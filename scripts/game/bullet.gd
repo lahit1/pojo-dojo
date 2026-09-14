@@ -25,6 +25,15 @@ func _ready() -> void:
 		body.body_entered.connect(
 			collision_check
 		)
+		if sound_player:
+			sound_player.play()
+			if sound_player.get_parent():
+				sound_player.reparent(GameManager.current_world, true)
+			sound_player.finished.connect(
+				func():
+					sound_player.get_parent().remove_child.call_deferred(explosion_sound_player)
+					sound_player.queue_free()
+			)
 
 func collision_check(collider: CollisionObject2D):
 	if dead || \
@@ -70,20 +79,14 @@ func trigger_explosition() -> void:
 				end_func,
 				CONNECT_DEFERRED
 			)
-	if sound_player:
-		sound_player.play()
-		sound_player.reparent(GameManager.current_world, true)
-		sound_player.finished.connect(
-			func():
-				sound_player.reparent.call_deferred(null)
-				sound_player.queue_free()
-		)
+
 	if explosion_sound_player:
 		explosion_sound_player.play()
-		explosion_sound_player.reparent(GameManager.current_world, true)
+		if explosion_sound_player.get_parent():
+			explosion_sound_player.reparent(GameManager.current_world, true)
 		explosion_sound_player.finished.connect(
 			func():
-				explosion_sound_player.reparent.call_deferred(null)
+				explosion_sound_player.get_parent().remove_child.call_deferred(explosion_sound_player)
 				explosion_sound_player.queue_free()
 		)
 
