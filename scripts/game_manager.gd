@@ -1,8 +1,8 @@
 class_name GameManager
 extends Node
 
-static var character1: Character
-static var character2: Character
+static var character1: CharacterData
+static var character2: CharacterData
 
 @export var character_spawner: CharacterSpawner
 @export var worlds_placeholder: Node
