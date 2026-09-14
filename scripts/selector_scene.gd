@@ -6,12 +6,14 @@ var player1_t: CharacterData.Type
 @export var player1: AnimatedSprite2D
 @export var player1_next_sprite_button: Button
 @export var player1_prev_sprite_button: Button
+@export var player1_ready_button: Button
 
 @export_group("Player 2", "player2_")
 var player2_t: CharacterData.Type
 @export var player2: AnimatedSprite2D
 @export var player2_next_sprite_button: Button
 @export var player2_prev_sprite_button: Button
+@export var player2_ready_button: Button
 
 var node2ctype: Dictionary[Node, CharacterData.Type] = {}
 
@@ -32,6 +34,9 @@ func _ready() -> void:
 			select(0, player1_t - 1)
 			pass
 	)
+	player1_ready_button.toggled.connect(
+		_notify_readiness
+	)
 
 	player2_next_sprite_button.pressed.connect(
 		func():
@@ -42,6 +47,9 @@ func _ready() -> void:
 		func():
 			select(1, player2_t - 1)
 			pass
+	)
+	player2_ready_button.toggled.connect(
+		_notify_readiness
 	)
 
 func select(n: int, ctype: CharacterData.Type):
@@ -59,3 +67,10 @@ func select(n: int, ctype: CharacterData.Type):
 	else:
 		player2_t = ctype
 		GameManager.character2 = character_data
+
+var readiness: int = 0
+func _notify_readiness(v: bool):
+	readiness += 1 if v else -1
+	if readiness == 2:
+		SceneManager.set_scene(SceneManager.SceneT.Game)
+		pass

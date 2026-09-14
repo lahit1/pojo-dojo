@@ -9,15 +9,17 @@ colors = PackedColorArray(0.6690609, 0.31510863, 0.989222, 1, 0.41144866, 0.5972
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8l8er"]
 gradient = SubResource("Gradient_ps1qd")
 
-[node name="Node" type="Node" unique_id=1764238435 node_paths=PackedStringArray("player1", "player1_next_sprite_button", "player1_prev_sprite_button", "player2", "player2_next_sprite_button", "player2_prev_sprite_button")]
+[node name="Node" type="Node" unique_id=1764238435 node_paths=PackedStringArray("player1", "player1_next_sprite_button", "player1_prev_sprite_button", "player1_ready_button", "player2", "player2_next_sprite_button", "player2_prev_sprite_button", "player2_ready_button")]
 process_mode = 4
 script = ExtResource("1_wj04o")
 player1 = NodePath("Control/PlayerPlaceholder1/AnimatedSprite2D")
 player1_next_sprite_button = NodePath("Control/Control/CharacterSelector1/Next")
 player1_prev_sprite_button = NodePath("Control/Control/CharacterSelector1/Prev")
+player1_ready_button = NodePath("Control/Control/CharacterSelector1/Ready")
 player2 = NodePath("Control/PlayerPlaceholder2/AnimatedSprite2D")
 player2_next_sprite_button = NodePath("Control/Control/CharacterSelector2/Next")
 player2_prev_sprite_button = NodePath("Control/Control/CharacterSelector2/Prev")
+player2_ready_button = NodePath("Control/Control/CharacterSelector2/Ready")
 
 [node name="Control" type="Control" parent="." unique_id=373841708]
 layout_mode = 3
@@ -84,6 +86,12 @@ process_mode = 3
 layout_mode = 2
 text = "Önceki"
 
+[node name="Ready" type="Button" parent="Control/Control/CharacterSelector1" unique_id=1103091268]
+process_mode = 3
+layout_mode = 2
+toggle_mode = true
+text = "Hazır"
+
 [node name="Next" type="Button" parent="Control/Control/CharacterSelector1" unique_id=1732121451]
 process_mode = 3
 layout_mode = 2
@@ -102,6 +110,12 @@ alignment = 1
 process_mode = 3
 layout_mode = 2
 text = "Önceki"
+
+[node name="Ready" type="Button" parent="Control/Control/CharacterSelector2" unique_id=1073905453]
+process_mode = 3
+layout_mode = 2
+toggle_mode = true
+text = "Hazır"
 
 [node name="Next" type="Button" parent="Control/Control/CharacterSelector2" unique_id=1316623087]
 process_mode = 3
