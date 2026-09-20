@@ -36,14 +36,20 @@ smooth_speed = 15.0
 
 [node name="WorldPlaceHolder" type="Node2D" parent="." unique_id=889794743]
 
-[node name="PlayerController" type="Node" parent="." unique_id=762324171 node_paths=PackedStringArray("camera")]
+[node name="PlayerController" type="Node" parent="." unique_id=762324171]
 script = ExtResource("4_iywne")
-camera = NodePath("../Camera2D")
 metadata/_custom_type_script = "uid://bb6dniw1rxy3r"
 
 [node name="PlayerController2" type="Node" parent="." unique_id=185963626 node_paths=PackedStringArray("camera")]
 script = ExtResource("4_iywne")
 camera = NodePath("../Camera2D")
+joy_device_id = 1
+left_movement_action = &"move_left2"
+right_movement_action = &"move_right2"
+jump_movement_action = &"jump2"
+drop_weapon_action = &"drop2"
+melee_attack_action = &"melee_attack2"
+shoot_weapon_action = &"shoot2"
 metadata/_custom_type_script = "uid://bb6dniw1rxy3r"
 
 [node name="RigidBody2D" parent="." unique_id=1929934816 instance=ExtResource("6_p57ef")]
