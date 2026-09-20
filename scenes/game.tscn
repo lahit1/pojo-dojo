@@ -21,10 +21,11 @@ hit_score_indicator_scene = ExtResource("2_u5sy4")
 hit_score_indicator_gradient = SubResource("Gradient_32jod")
 hit_score_indicator_rotation_radius_degrees = 60.0
 
-[node name="CharacterSpawner" type="Node" parent="." unique_id=1871654956 node_paths=PackedStringArray("camera_aligner", "player_controller1")]
+[node name="CharacterSpawner" type="Node" parent="." unique_id=1871654956 node_paths=PackedStringArray("camera_aligner", "player_controller1", "player_controller2")]
 script = ExtResource("1_lnu2h")
 camera_aligner = NodePath("../Camera2D")
 player_controller1 = NodePath("../PlayerController")
+player_controller2 = NodePath("../PlayerController2")
 metadata/_custom_type_script = "uid://boa6d3h4ia8aq"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1469216039]
@@ -36,6 +37,11 @@ smooth_speed = 15.0
 [node name="WorldPlaceHolder" type="Node2D" parent="." unique_id=889794743]
 
 [node name="PlayerController" type="Node" parent="." unique_id=762324171 node_paths=PackedStringArray("camera")]
+script = ExtResource("4_iywne")
+camera = NodePath("../Camera2D")
+metadata/_custom_type_script = "uid://bb6dniw1rxy3r"
+
+[node name="PlayerController2" type="Node" parent="." unique_id=185963626 node_paths=PackedStringArray("camera")]
 script = ExtResource("4_iywne")
 camera = NodePath("../Camera2D")
 metadata/_custom_type_script = "uid://bb6dniw1rxy3r"
