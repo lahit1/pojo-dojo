@@ -1,13 +1,24 @@
 [gd_scene format=3 uid="uid://c4fi6f2ewlh4m"]
 
 [ext_resource type="Script" uid="uid://bed46nl5ioige" path="res://scripts/selector_scene.gd" id="1_wj04o"]
+[ext_resource type="Shader" uid="uid://b2jkjehoy5dy8" path="res://scenes/selector_background.gdshader" id="2_7ji5i"]
 
-[sub_resource type="Gradient" id="Gradient_ps1qd"]
-offsets = PackedFloat32Array(0.3, 0.7)
-colors = PackedColorArray(0.6690609, 0.31510863, 0.989222, 1, 0.41144866, 0.5972148, 0.9999955, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wlu85"]
+shader = ExtResource("2_7ji5i")
+shader_parameter/direction = Vector2(0, -1)
+shader_parameter/speed = 0.35
+shader_parameter/bubble_scale = 1.2650000000000001
+shader_parameter/aspect_ratio = 1.15
+shader_parameter/pixel_amount = 150.0
+shader_parameter/color_bg = Color(0, 0.3043846, 0.70087785, 1)
+shader_parameter/color_outer = Color(0.04224041, 0.25740108, 0.5405941, 1)
+shader_parameter/color_inner_edge = Color(0.3, 0.7, 0.9, 1)
+shader_parameter/color_inside = Color(0.3189152, 0.8487829, 0.99999994, 1)
+shader_parameter/threshold_outer = 0.4
+shader_parameter/threshold_inner_edge = 0.65
+shader_parameter/threshold_inside = 0.9
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8l8er"]
-gradient = SubResource("Gradient_ps1qd")
+[sub_resource type="Texture2DRD" id="Texture2DRD_6stev"]
 
 [node name="Node" type="Node" unique_id=1764238435 node_paths=PackedStringArray("player1", "player1_next_sprite_button", "player1_prev_sprite_button", "player1_ready_button", "player2", "player2_next_sprite_button", "player2_prev_sprite_button", "player2_ready_button")]
 process_mode = 4
@@ -30,13 +41,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="Control" unique_id=1339015983]
+material = SubResource("ShaderMaterial_wlu85")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_8l8er")
+scale = Vector2(2, 2)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = SubResource("Texture2DRD_6stev")
 
 [node name="PlayerPlaceholder1" type="Control" parent="Control" unique_id=1373221772]
 layout_mode = 1
