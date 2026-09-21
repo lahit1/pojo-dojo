@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://jl3hpqr1qma"]
+
+[ext_resource type="Script" uid="uid://cblosiplh7e6p" path="res://scripts/game/weapon/weapon_node.gd" id="1_301ck"]
+[ext_resource type="PackedScene" uid="uid://c6mxoaef1obeq" path="res://scenes/weapons/4smg04/4smg04_ammo.tscn" id="2_o2e28"]
+[ext_resource type="Texture2D" uid="uid://d2a4o2tk51h2" path="res://assets/Ranitayas Guns Pack (16+ pixelart guns)/AssaultRifles/5AssaultRifle05.png" id="3_gs0j2"]
+[ext_resource type="PackedScene" uid="uid://bxx2m8j34vubf" path="res://scenes/aim_indicator.tscn" id="4_cukc7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mulmr"]
+friction = 0.5
+bounce = 0.25
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8l8er"]
+radius = 8.059753
+height = 38.0
+
+[node name="4SMG04" type="Node2D" unique_id=167506660 node_paths=PackedStringArray("body", "barrel", "ammo_director", "aim_indicator")]
+script = ExtResource("1_301ck")
+body = NodePath("Handle/RigidBody2D")
+barrel = NodePath("Barrel")
+ammo_director = NodePath("AmmoDirector")
+bullet_scene = ExtResource("2_o2e28")
+bullet_cooldown = 0.05
+ammo_in_magazine = 17
+aim_indicator = NodePath("AmmoDirector/AimIndicator")
+
+[node name="Handle" type="Node2D" parent="." unique_id=489809300]
+position = Vector2(6, -4)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Handle" unique_id=1903152008]
+collision_layer = 2
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_mulmr")
+
+[node name="4Smg04" type="Sprite2D" parent="Handle/RigidBody2D" unique_id=1698984824]
+texture = ExtResource("3_gs0j2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Handle/RigidBody2D" unique_id=884942023]
+rotation = 1.6702236
+shape = SubResource("CapsuleShape2D_8l8er")
+
+[node name="Barrel" type="Marker2D" parent="." unique_id=1371696839]
+position = Vector2(24, -6)
+
+[node name="AmmoDirector" type="Marker2D" parent="." unique_id=159304120]
+position = Vector2(29, -6)
+
+[node name="AimIndicator" parent="AmmoDirector" unique_id=1607737127 instance=ExtResource("4_cukc7")]

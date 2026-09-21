@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://cvgvi40fdd61b"]
+[gd_scene format=3 uid="uid://bp6iajb8vljes"]
 
-[ext_resource type="Script" uid="uid://cblosiplh7e6p" path="res://scripts/game/weapon/weapon_node.gd" id="1_nt4dx"]
-[ext_resource type="PackedScene" uid="uid://cbl3tsa8nqd44" path="res://scenes/weapons/5Explosive05/5Explosive05_ammo.tscn" id="2_4r1b6"]
-[ext_resource type="Texture2D" uid="uid://b73f6f8v7jqgv" path="res://assets/Ranitayas Guns Pack (16+ pixelart guns)/Explosives/5Explosive05.png" id="3_j4wf0"]
-[ext_resource type="PackedScene" uid="uid://bxx2m8j34vubf" path="res://scenes/aim_indicator.tscn" id="4_sddxt"]
+[ext_resource type="Script" uid="uid://cblosiplh7e6p" path="res://scripts/game/weapon/weapon_node.gd" id="1_l5kas"]
+[ext_resource type="PackedScene" uid="uid://cbl3tsa8nqd44" path="res://scenes/weapons/5Explosive05/5Explosive05_ammo.tscn" id="2_7llii"]
+[ext_resource type="Texture2D" uid="uid://vgcpgfk7qxav" path="res://assets/Ranitayas Guns Pack (16+ pixelart guns)/Explosives/4Explosive04.png" id="3_5cree"]
+[ext_resource type="PackedScene" uid="uid://bxx2m8j34vubf" path="res://scenes/aim_indicator.tscn" id="4_i75ki"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mulmr"]
 friction = 0.5
@@ -11,19 +11,19 @@ bounce = 0.25
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8l8er"]
 radius = 7.0
-height = 26.000044
+height = 42.000046
 
 [node name="5Explosive05" type="Node2D" unique_id=167506660 node_paths=PackedStringArray("body", "barrel", "ammo_director")]
-script = ExtResource("1_nt4dx")
+script = ExtResource("1_l5kas")
 body = NodePath("Handle/RigidBody2D")
 barrel = NodePath("Barrel")
 ammo_director = NodePath("AmmoDirector")
-bullet_scene = ExtResource("2_4r1b6")
+bullet_scene = ExtResource("2_7llii")
 bullet_cooldown = 2.0
 ammo_in_magazine = 1
 
 [node name="Handle" type="Node2D" parent="." unique_id=489809300]
-position = Vector2(-1, -6)
+position = Vector2(7, -6)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Handle" unique_id=1903152008]
 collision_layer = 2
@@ -35,7 +35,7 @@ rotation = 1.5707743
 shape = SubResource("CapsuleShape2D_8l8er")
 
 [node name="5Explosive05" type="Sprite2D" parent="Handle/RigidBody2D" unique_id=300579181]
-texture = ExtResource("3_j4wf0")
+texture = ExtResource("3_5cree")
 
 [node name="Barrel" type="Marker2D" parent="." unique_id=1371696839]
 position = Vector2(24, -6)
@@ -43,4 +43,4 @@ position = Vector2(24, -6)
 [node name="AmmoDirector" type="Marker2D" parent="." unique_id=159304120]
 position = Vector2(29, -6)
 
-[node name="AimIndicator" parent="AmmoDirector" unique_id=1607737127 instance=ExtResource("4_sddxt")]
+[node name="AimIndicator" parent="AmmoDirector" unique_id=1607737127 instance=ExtResource("4_i75ki")]
