@@ -24,7 +24,7 @@ func request_spawn(character: Node2D):
 	camera_aligner.char2 = camera_aligner.char1
 	camera_aligner.char1 = character
 
-	if is_instance_valid(player_controller2):
+	if is_instance_valid(player_controller2) && is_instance_valid(player_controller1):
 		player_controller2.character = player_controller1.character
 
 	if is_instance_valid(player_controller1):

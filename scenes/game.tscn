@@ -36,7 +36,7 @@ load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kvpfn"]
 atlas = SubResource("CompressedTexture2D_vtaks")
-region = Rect2(16, 160, 16, 16)
+region = Rect2(32, 160, 16, 16)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0tnpc"]
 load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"

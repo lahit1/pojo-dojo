@@ -24,12 +24,12 @@ shader_parameter/threshold_inside = 0.9
 
 [sub_resource type="Texture2DRD" id="Texture2DRD_6stev"]
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_puhoh"]
-device = 1
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_buvdd"]
 button_index = 13
+pressed = true
 
 [sub_resource type="Shortcut" id="Shortcut_puhoh"]
-events = [SubResource("InputEventJoypadButton_puhoh")]
+events = [SubResource("InputEventJoypadButton_buvdd")]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_buvdd"]
 load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
@@ -45,11 +45,12 @@ load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c
 atlas = SubResource("CompressedTexture2D_v6dvc")
 region = Rect2(32, 160, 16, 16)
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_buvdd"]
-device = 1
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_puhoh"]
+button_index = 2
+pressed = true
 
 [sub_resource type="Shortcut" id="Shortcut_i8cl7"]
-events = [SubResource("InputEventJoypadButton_buvdd")]
+events = [SubResource("InputEventJoypadButton_puhoh")]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_puhoh"]
 load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
@@ -66,8 +67,8 @@ atlas = SubResource("CompressedTexture2D_4fnji")
 region = Rect2(80, 64, 16, 16)
 
 [sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_i8cl7"]
-device = 1
 button_index = 14
+pressed = true
 
 [sub_resource type="Shortcut" id="Shortcut_7hpki"]
 events = [SubResource("InputEventJoypadButton_i8cl7")]
@@ -86,11 +87,21 @@ load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c
 atlas = SubResource("CompressedTexture2D_a0yho")
 region = Rect2(64, 160, 16, 16)
 
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_v6dvc"]
+device = 1
+button_index = 13
+pressed = true
+
 [sub_resource type="Shortcut" id="Shortcut_buvdd"]
-events = [SubResource("InputEventJoypadButton_puhoh")]
+events = [SubResource("InputEventJoypadButton_v6dvc")]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_4fnji"]
+device = 1
+button_index = 2
+pressed = true
 
 [sub_resource type="Shortcut" id="Shortcut_v6dvc"]
-events = [SubResource("InputEventJoypadButton_buvdd")]
+events = [SubResource("InputEventJoypadButton_4fnji")]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7ji5i"]
 streams_count = 3
