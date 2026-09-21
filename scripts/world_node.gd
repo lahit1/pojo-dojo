@@ -26,7 +26,7 @@ func _ready() -> void:
 	)
 
 func notify_weapon_count_changed():
-	if WeaponNode.total_instance < max_lucky_blok_dublet_count * 2:
+	#if WeaponNode.total_instance < max_lucky_blok_dublet_count * 2:
 		reset_lucky_blok_spawn_timer()
 
 func reset_lucky_blok_spawn_timer():
