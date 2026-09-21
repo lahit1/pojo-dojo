@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cm8hn8vr8ptm0"
+path="res://.godot/imported/Smooth Sailing.mp3-331c10ae9578c846bf6e31a58f9abd8e.mp3str"
+
+[deps]
+
+source_file="res://assets/DOS-88 Synthwave Music Library/Smooth Sailing.mp3"
+dest_files=["res://.godot/imported/Smooth Sailing.mp3-331c10ae9578c846bf6e31a58f9abd8e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
