@@ -7,6 +7,12 @@
 [ext_resource type="Script" uid="uid://bb6dniw1rxy3r" path="res://scripts/game/player_controller.gd" id="5_yblbm"]
 [ext_resource type="PackedScene" uid="uid://77fxty1fp4nr" path="res://scenes/weapons/4smg04/4smg04.tscn" id="6_qyh6i"]
 [ext_resource type="PackedScene" uid="uid://cvgvi40fdd61b" path="res://scenes/weapons/5Explosive05/5Explosive05.tscn" id="7_8brng"]
+[ext_resource type="AudioStream" uid="uid://b2eqt0ml82bjw" path="res://assets/DOS-88 Synthwave Music Library/Race to Mars.mp3" id="8_kvpfn"]
+[ext_resource type="AudioStream" uid="uid://c7td2noa83ggh" path="res://assets/DOS-88 Synthwave Music Library/Checking Manifest.mp3" id="9_dinhu"]
+[ext_resource type="AudioStream" uid="uid://cm8hn8vr8ptm0" path="res://assets/DOS-88 Synthwave Music Library/Smooth Sailing.mp3" id="10_kvuet"]
+[ext_resource type="AudioStream" uid="uid://dmumsyip7cfod" path="res://assets/DOS-88 Synthwave Music Library/DOS-88 - Automatav2.mp3" id="11_kvuet"]
+[ext_resource type="Script" uid="uid://bix5nq886jd8q" path="res://scripts/audio_stream_looper.gd" id="11_trtic"]
+[ext_resource type="AudioStream" uid="uid://bvcvdaeqhgc1f" path="res://assets/DOS-88 Synthwave Music Library/DOS-88 - City Stomper.mp3" id="12_trtic"]
 
 [sub_resource type="Gradient" id="Gradient_32jod"]
 colors = PackedColorArray(0.33333334, 0.68235296, 0.3019608, 1, 1, 0, 0, 1)
@@ -45,6 +51,16 @@ load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c
 [sub_resource type="AtlasTexture" id="AtlasTexture_gee14"]
 atlas = SubResource("CompressedTexture2D_u5sy4")
 region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ir15t"]
+streams_count = 5
+stream_0/stream = ExtResource("8_kvpfn")
+stream_1/stream = ExtResource("9_dinhu")
+stream_2/stream = ExtResource("10_kvuet")
+stream_3/stream = ExtResource("11_kvuet")
+stream_3/weight = 2.0
+stream_4/stream = ExtResource("12_trtic")
+stream_4/weight = 2.0
 
 [node name="Node" type="Node" unique_id=943285480]
 
@@ -192,3 +208,10 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Reload"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1191332488]
+process_mode = 3
+stream = SubResource("AudioStreamRandomizer_ir15t")
+bus = &"Music Bus"
+playback_type = 1
+script = ExtResource("11_trtic")

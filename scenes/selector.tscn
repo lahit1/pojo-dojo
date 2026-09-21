@@ -180,6 +180,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="Control/Control/CharacterSelector1/prev" unique_id=820005484]
+process_mode = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 shortcut = SubResource("Shortcut_puhoh")
@@ -197,6 +198,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="Control/Control/CharacterSelector1/ready" unique_id=10191403]
+process_mode = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 toggle_mode = true
@@ -215,6 +217,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="Control/Control/CharacterSelector1/next" unique_id=1622442223]
+process_mode = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 shortcut = SubResource("Shortcut_7hpki")
@@ -241,6 +244,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="Control/Control/CharacterSelector2/prev" unique_id=678270757]
+process_mode = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 shortcut = SubResource("Shortcut_buvdd")
@@ -258,6 +262,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="Control/Control/CharacterSelector2/ready" unique_id=1506816296]
+process_mode = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 toggle_mode = true
@@ -276,6 +281,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="Control/Control/CharacterSelector2/next" unique_id=961620427]
+process_mode = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 shortcut = SubResource("Shortcut_7hpki")
