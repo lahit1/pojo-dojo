@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b2eqt0ml82bjw" path="res://assets/DOS-88 Synthwave Music Library/Race to Mars.mp3" id="3_wj04o"]
 [ext_resource type="AudioStream" uid="uid://cm8hn8vr8ptm0" path="res://assets/DOS-88 Synthwave Music Library/Smooth Sailing.mp3" id="5_buvdd"]
 [ext_resource type="AudioStream" uid="uid://c7td2noa83ggh" path="res://assets/DOS-88 Synthwave Music Library/Checking Manifest.mp3" id="5_esnui"]
+[ext_resource type="Script" uid="uid://bix5nq886jd8q" path="res://scripts/audio_stream_looper.gd" id="8_i8cl7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wlu85"]
 shader = ExtResource("2_7ji5i")
@@ -148,6 +149,6 @@ text = "Sonraki"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1373792105]
 process_mode = 3
 stream = SubResource("AudioStreamRandomizer_7ji5i")
-autoplay = true
 bus = &"Music Bus"
 playback_type = 1
+script = ExtResource("8_i8cl7")
