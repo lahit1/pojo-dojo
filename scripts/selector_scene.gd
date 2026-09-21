@@ -7,6 +7,7 @@ var player1_t: CharacterData.Type
 @export var player1_next_sprite_button: BaseButton
 @export var player1_prev_sprite_button: BaseButton
 @export var player1_ready_button: BaseButton
+@export var player1_label: Label
 
 @export_group("Player 2", "player2_")
 var player2_t: CharacterData.Type
@@ -14,6 +15,7 @@ var player2_t: CharacterData.Type
 @export var player2_next_sprite_button: BaseButton
 @export var player2_prev_sprite_button: BaseButton
 @export var player2_ready_button: BaseButton
+@export var player2_label: Label
 
 var node2ctype: Dictionary[Node, CharacterData.Type] = {}
 
@@ -64,9 +66,11 @@ func select(n: int, ctype: CharacterData.Type):
 	if n == 0:
 		player1_t = ctype
 		GameManager.character1 = character_data
+		player1_label.text = character_data.label
 	else:
 		player2_t = ctype
 		GameManager.character2 = character_data
+		player2_label.text = character_data.label
 
 var readiness: int = 0
 func _notify_readiness(v: bool):

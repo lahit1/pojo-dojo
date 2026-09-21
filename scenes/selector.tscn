@@ -98,17 +98,19 @@ stream_0/stream = ExtResource("3_wj04o")
 stream_1/stream = ExtResource("5_esnui")
 stream_2/stream = ExtResource("5_buvdd")
 
-[node name="Node" type="Node" unique_id=1764238435 node_paths=PackedStringArray("player1", "player1_next_sprite_button", "player1_prev_sprite_button", "player1_ready_button", "player2", "player2_next_sprite_button", "player2_prev_sprite_button", "player2_ready_button")]
+[node name="Node" type="Node" unique_id=1764238435 node_paths=PackedStringArray("player1", "player1_next_sprite_button", "player1_prev_sprite_button", "player1_ready_button", "player1_label", "player2", "player2_next_sprite_button", "player2_prev_sprite_button", "player2_ready_button", "player2_label")]
 process_mode = 4
 script = ExtResource("1_wj04o")
 player1 = NodePath("Control/PlayerPlaceholder1/AnimatedSprite2D")
 player1_next_sprite_button = NodePath("Control/Control/CharacterSelector1/next/TextureButton")
 player1_prev_sprite_button = NodePath("Control/Control/CharacterSelector1/prev/TextureButton")
 player1_ready_button = NodePath("Control/Control/CharacterSelector1/ready/TextureButton")
+player1_label = NodePath("Control/HBoxContainer/Character1 Label")
 player2 = NodePath("Control/PlayerPlaceholder2/AnimatedSprite2D")
 player2_next_sprite_button = NodePath("Control/Control/CharacterSelector2/next/TextureButton")
 player2_prev_sprite_button = NodePath("Control/Control/CharacterSelector2/prev/TextureButton")
 player2_ready_button = NodePath("Control/Control/CharacterSelector2/ready/TextureButton")
+player2_label = NodePath("Control/HBoxContainer/Character2 Label")
 
 [node name="Control" type="Control" parent="." unique_id=373841708]
 layout_mode = 3
@@ -285,6 +287,29 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Sonraki"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1630771139]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.7
+anchor_right = 0.9
+anchor_bottom = 0.8
+alignment = 2
+
+[node name="Character1 Label" type="Label" parent="Control/HBoxContainer" unique_id=1926744193]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "Test"
+horizontal_alignment = 1
+
+[node name="Character2 Label" type="Label" parent="Control/HBoxContainer" unique_id=1232184665]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "Test"
+horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1373792105]
 process_mode = 3
