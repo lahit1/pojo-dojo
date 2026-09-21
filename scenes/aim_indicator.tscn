@@ -1,18 +1,25 @@
 [gd_scene format=3 uid="uid://bxx2m8j34vubf"]
 
-[ext_resource type="Texture2D" uid="uid://c54giu3bvh27s" path="res://icon.svg" id="1_3ecq5"]
+[sub_resource type="Gradient" id="Gradient_fp6sk"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0.3372549, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ij8lo"]
+gradient = SubResource("Gradient_fp6sk")
+width = 128
+height = 128
 
 [node name="Node2D" type="Node2D" unique_id=1607737127]
 scale = Vector2(0.05, 0.05)
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1620794432]
 position = Vector2(128, 0)
-texture = ExtResource("1_3ecq5")
+texture = SubResource("GradientTexture2D_ij8lo")
 
 [node name="Icon2" type="Sprite2D" parent="." unique_id=1334453078]
 position = Vector2(384, 0)
-texture = ExtResource("1_3ecq5")
+texture = SubResource("GradientTexture2D_ij8lo")
 
 [node name="Icon3" type="Sprite2D" parent="." unique_id=1662073840]
 position = Vector2(640, 0)
-texture = ExtResource("1_3ecq5")
+texture = SubResource("GradientTexture2D_ij8lo")
