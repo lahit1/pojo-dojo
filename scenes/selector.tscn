@@ -24,6 +24,74 @@ shader_parameter/threshold_inside = 0.9
 
 [sub_resource type="Texture2DRD" id="Texture2DRD_6stev"]
 
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_puhoh"]
+device = 1
+button_index = 13
+
+[sub_resource type="Shortcut" id="Shortcut_puhoh"]
+events = [SubResource("InputEventJoypadButton_puhoh")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_buvdd"]
+load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puhoh"]
+atlas = SubResource("CompressedTexture2D_buvdd")
+region = Rect2(32, 144, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v6dvc"]
+load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fnji"]
+atlas = SubResource("CompressedTexture2D_v6dvc")
+region = Rect2(32, 160, 16, 16)
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_buvdd"]
+device = 1
+
+[sub_resource type="Shortcut" id="Shortcut_i8cl7"]
+events = [SubResource("InputEventJoypadButton_buvdd")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_puhoh"]
+load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8cl7"]
+atlas = SubResource("CompressedTexture2D_puhoh")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4fnji"]
+load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0yho"]
+atlas = SubResource("CompressedTexture2D_4fnji")
+region = Rect2(80, 64, 16, 16)
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_i8cl7"]
+device = 1
+button_index = 14
+
+[sub_resource type="Shortcut" id="Shortcut_7hpki"]
+events = [SubResource("InputEventJoypadButton_i8cl7")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i8cl7"]
+load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6dvc"]
+atlas = SubResource("CompressedTexture2D_i8cl7")
+region = Rect2(64, 144, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a0yho"]
+load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hpki"]
+atlas = SubResource("CompressedTexture2D_a0yho")
+region = Rect2(64, 160, 16, 16)
+
+[sub_resource type="Shortcut" id="Shortcut_buvdd"]
+events = [SubResource("InputEventJoypadButton_puhoh")]
+
+[sub_resource type="Shortcut" id="Shortcut_v6dvc"]
+events = [SubResource("InputEventJoypadButton_buvdd")]
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7ji5i"]
 streams_count = 3
 stream_0/stream = ExtResource("3_wj04o")
@@ -34,13 +102,13 @@ stream_2/stream = ExtResource("5_buvdd")
 process_mode = 4
 script = ExtResource("1_wj04o")
 player1 = NodePath("Control/PlayerPlaceholder1/AnimatedSprite2D")
-player1_next_sprite_button = NodePath("Control/Control/CharacterSelector1/Next")
-player1_prev_sprite_button = NodePath("Control/Control/CharacterSelector1/Prev")
-player1_ready_button = NodePath("Control/Control/CharacterSelector1/Ready")
+player1_next_sprite_button = NodePath("Control/Control/CharacterSelector1/next/TextureButton")
+player1_prev_sprite_button = NodePath("Control/Control/CharacterSelector1/prev/TextureButton")
+player1_ready_button = NodePath("Control/Control/CharacterSelector1/ready/TextureButton")
 player2 = NodePath("Control/PlayerPlaceholder2/AnimatedSprite2D")
-player2_next_sprite_button = NodePath("Control/Control/CharacterSelector2/Next")
-player2_prev_sprite_button = NodePath("Control/Control/CharacterSelector2/Prev")
-player2_ready_button = NodePath("Control/Control/CharacterSelector2/Ready")
+player2_next_sprite_button = NodePath("Control/Control/CharacterSelector2/next/TextureButton")
+player2_prev_sprite_button = NodePath("Control/Control/CharacterSelector2/prev/TextureButton")
+player2_ready_button = NodePath("Control/Control/CharacterSelector2/ready/TextureButton")
 
 [node name="Control" type="Control" parent="." unique_id=373841708]
 layout_mode = 3
@@ -105,20 +173,56 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Prev" type="Button" parent="Control/Control/CharacterSelector1" unique_id=1584475309]
-process_mode = 3
+[node name="prev" type="HBoxContainer" parent="Control/Control/CharacterSelector1" unique_id=989754456]
 layout_mode = 2
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/Control/CharacterSelector1/prev" unique_id=820005484]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+shortcut = SubResource("Shortcut_puhoh")
+texture_normal = SubResource("AtlasTexture_puhoh")
+texture_pressed = SubResource("AtlasTexture_4fnji")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/Control/CharacterSelector1/prev" unique_id=2054584022]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Önceki"
 
-[node name="Ready" type="Button" parent="Control/Control/CharacterSelector1" unique_id=1103091268]
-process_mode = 3
+[node name="ready" type="HBoxContainer" parent="Control/Control/CharacterSelector1" unique_id=609348988]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/Control/CharacterSelector1/ready" unique_id=10191403]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 toggle_mode = true
+shortcut = SubResource("Shortcut_i8cl7")
+texture_normal = SubResource("AtlasTexture_i8cl7")
+texture_pressed = SubResource("AtlasTexture_a0yho")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/Control/CharacterSelector1/ready" unique_id=699639564]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Hazır"
 
-[node name="Next" type="Button" parent="Control/Control/CharacterSelector1" unique_id=1732121451]
-process_mode = 3
+[node name="next" type="HBoxContainer" parent="Control/Control/CharacterSelector1" unique_id=1835615699]
 layout_mode = 2
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/Control/CharacterSelector1/next" unique_id=1622442223]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+shortcut = SubResource("Shortcut_7hpki")
+texture_normal = SubResource("AtlasTexture_v6dvc")
+texture_pressed = SubResource("AtlasTexture_7hpki")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/Control/CharacterSelector1/next" unique_id=2076006141]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Sonraki"
 
 [node name="CharacterSelector2" type="HBoxContainer" parent="Control/Control" unique_id=201854094]
@@ -130,20 +234,56 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Prev" type="Button" parent="Control/Control/CharacterSelector2" unique_id=1865297665]
-process_mode = 3
+[node name="prev" type="HBoxContainer" parent="Control/Control/CharacterSelector2" unique_id=614522736]
 layout_mode = 2
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/Control/CharacterSelector2/prev" unique_id=678270757]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+shortcut = SubResource("Shortcut_buvdd")
+texture_normal = SubResource("AtlasTexture_puhoh")
+texture_pressed = SubResource("AtlasTexture_4fnji")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/Control/CharacterSelector2/prev" unique_id=90044255]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Önceki"
 
-[node name="Ready" type="Button" parent="Control/Control/CharacterSelector2" unique_id=1073905453]
-process_mode = 3
+[node name="ready" type="HBoxContainer" parent="Control/Control/CharacterSelector2" unique_id=1903611617]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/Control/CharacterSelector2/ready" unique_id=1506816296]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 toggle_mode = true
+shortcut = SubResource("Shortcut_v6dvc")
+texture_normal = SubResource("AtlasTexture_i8cl7")
+texture_pressed = SubResource("AtlasTexture_a0yho")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/Control/CharacterSelector2/ready" unique_id=1873162933]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Hazır"
 
-[node name="Next" type="Button" parent="Control/Control/CharacterSelector2" unique_id=1316623087]
-process_mode = 3
+[node name="next" type="HBoxContainer" parent="Control/Control/CharacterSelector2" unique_id=1294616173]
 layout_mode = 2
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/Control/CharacterSelector2/next" unique_id=961620427]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+shortcut = SubResource("Shortcut_7hpki")
+texture_normal = SubResource("AtlasTexture_v6dvc")
+texture_pressed = SubResource("AtlasTexture_7hpki")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/Control/CharacterSelector2/next" unique_id=213549955]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Sonraki"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1373792105]

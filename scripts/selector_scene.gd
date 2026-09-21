@@ -4,16 +4,16 @@ extends Node
 @export_group("Player 1", "player1_")
 var player1_t: CharacterData.Type
 @export var player1: AnimatedSprite2D
-@export var player1_next_sprite_button: Button
-@export var player1_prev_sprite_button: Button
-@export var player1_ready_button: Button
+@export var player1_next_sprite_button: BaseButton
+@export var player1_prev_sprite_button: BaseButton
+@export var player1_ready_button: BaseButton
 
 @export_group("Player 2", "player2_")
 var player2_t: CharacterData.Type
 @export var player2: AnimatedSprite2D
-@export var player2_next_sprite_button: Button
-@export var player2_prev_sprite_button: Button
-@export var player2_ready_button: Button
+@export var player2_next_sprite_button: BaseButton
+@export var player2_prev_sprite_button: BaseButton
+@export var player2_ready_button: BaseButton
 
 var node2ctype: Dictionary[Node, CharacterData.Type] = {}
 
