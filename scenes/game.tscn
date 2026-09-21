@@ -1,47 +1,84 @@
-[gd_scene format=3 uid="uid://762ti02j6ecn"]
+[gd_scene format=3 uid="uid://c6uudf17byhtv"]
 
-[ext_resource type="Script" uid="uid://boa6d3h4ia8aq" path="res://scripts/game/character_spawner.gd" id="1_lnu2h"]
-[ext_resource type="Script" uid="uid://f08wpsux6j0c" path="res://scripts/game/camera_aligner.gd" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://5x8cb8k1dqxh" path="res://scenes/hit_score_indicator.tscn" id="2_u5sy4"]
-[ext_resource type="Script" uid="uid://bb6dniw1rxy3r" path="res://scripts/game/player_controller.gd" id="4_iywne"]
-[ext_resource type="Script" uid="uid://cgkc83vbio8s1" path="res://scripts/game_manager.gd" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://77fxty1fp4nr" path="res://scenes/weapons/4smg04/4smg04.tscn" id="6_p57ef"]
-[ext_resource type="PackedScene" uid="uid://cvgvi40fdd61b" path="res://scenes/weapons/5Explosive05/5Explosive05.tscn" id="6_u5sy4"]
+[ext_resource type="Script" uid="uid://cgkc83vbio8s1" path="res://scripts/game_manager.gd" id="1_kh4a2"]
+[ext_resource type="PackedScene" uid="uid://5x8cb8k1dqxh" path="res://scenes/hit_score_indicator.tscn" id="2_8j387"]
+[ext_resource type="Script" uid="uid://boa6d3h4ia8aq" path="res://scripts/game/character_spawner.gd" id="3_5dhap"]
+[ext_resource type="Script" uid="uid://f08wpsux6j0c" path="res://scripts/game/camera_aligner.gd" id="4_s427y"]
+[ext_resource type="Script" uid="uid://bb6dniw1rxy3r" path="res://scripts/game/player_controller.gd" id="5_yblbm"]
+[ext_resource type="PackedScene" uid="uid://77fxty1fp4nr" path="res://scenes/weapons/4smg04/4smg04.tscn" id="6_qyh6i"]
+[ext_resource type="PackedScene" uid="uid://cvgvi40fdd61b" path="res://scenes/weapons/5Explosive05/5Explosive05.tscn" id="7_8brng"]
 
 [sub_resource type="Gradient" id="Gradient_32jod"]
 colors = PackedColorArray(0.33333334, 0.68235296, 0.3019608, 1, 1, 0, 0, 1)
 
-[node name="Game" type="Node2D" unique_id=854883889 node_paths=PackedStringArray("character_spawner", "worlds_placeholder", "camera", "hit_score_placeholder")]
-script = ExtResource("4_lbhrr")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gee14"]
+load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]
+atlas = SubResource("CompressedTexture2D_gee14")
+region = Rect2(48, 256, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kvpfn"]
+load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dinhu"]
+atlas = SubResource("CompressedTexture2D_kvpfn")
+region = Rect2(48, 352, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vtaks"]
+load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvpfn"]
+atlas = SubResource("CompressedTexture2D_vtaks")
+region = Rect2(16, 160, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0tnpc"]
+load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtaks"]
+atlas = SubResource("CompressedTexture2D_0tnpc")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u5sy4"]
+load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gee14"]
+atlas = SubResource("CompressedTexture2D_u5sy4")
+region = Rect2(48, 0, 16, 16)
+
+[node name="Node" type="Node" unique_id=943285480]
+
+[node name="Game" type="Node2D" parent="." unique_id=854883889 node_paths=PackedStringArray("character_spawner", "worlds_placeholder", "camera", "hit_score_placeholder")]
+script = ExtResource("1_kh4a2")
 character_spawner = NodePath("CharacterSpawner")
 worlds_placeholder = NodePath("WorldPlaceHolder")
 camera = NodePath("Camera2D")
 hit_score_placeholder = NodePath("HitScoreIndicatorsPlaceholder")
-hit_score_indicator_scene = ExtResource("2_u5sy4")
+hit_score_indicator_scene = ExtResource("2_8j387")
 hit_score_indicator_gradient = SubResource("Gradient_32jod")
 hit_score_indicator_rotation_radius_degrees = 60.0
 
-[node name="CharacterSpawner" type="Node" parent="." unique_id=1871654956 node_paths=PackedStringArray("camera_aligner", "player_controller1", "player_controller2")]
-script = ExtResource("1_lnu2h")
+[node name="CharacterSpawner" type="Node" parent="Game" unique_id=1871654956 node_paths=PackedStringArray("camera_aligner", "player_controller1", "player_controller2")]
+script = ExtResource("3_5dhap")
 camera_aligner = NodePath("../Camera2D")
 player_controller1 = NodePath("../PlayerController")
 player_controller2 = NodePath("../PlayerController2")
 metadata/_custom_type_script = "uid://boa6d3h4ia8aq"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1469216039]
+[node name="Camera2D" type="Camera2D" parent="Game" unique_id=1469216039]
 position = Vector2(3, -72)
 zoom = Vector2(3, 3)
-script = ExtResource("1_yqjtg")
+script = ExtResource("4_s427y")
 smooth_speed = 15.0
 
-[node name="WorldPlaceHolder" type="Node2D" parent="." unique_id=889794743]
+[node name="WorldPlaceHolder" type="Node2D" parent="Game" unique_id=889794743]
 
-[node name="PlayerController" type="Node" parent="." unique_id=762324171]
-script = ExtResource("4_iywne")
+[node name="PlayerController" type="Node" parent="Game" unique_id=762324171]
+script = ExtResource("5_yblbm")
 metadata/_custom_type_script = "uid://bb6dniw1rxy3r"
 
-[node name="PlayerController2" type="Node" parent="." unique_id=185963626 node_paths=PackedStringArray("camera")]
-script = ExtResource("4_iywne")
+[node name="PlayerController2" type="Node" parent="Game" unique_id=185963626 node_paths=PackedStringArray("camera")]
+script = ExtResource("5_yblbm")
 camera = NodePath("../Camera2D")
 joy_device_id = 1
 left_movement_action = &"move_left2"
@@ -52,11 +89,106 @@ melee_attack_action = &"melee_attack2"
 shoot_weapon_action = &"shoot2"
 metadata/_custom_type_script = "uid://bb6dniw1rxy3r"
 
-[node name="RigidBody2D" parent="." unique_id=1929934816 instance=ExtResource("6_p57ef")]
+[node name="RigidBody2D" parent="Game" unique_id=1929934816 instance=ExtResource("6_qyh6i")]
 position = Vector2(38, -77)
 
-[node name="4SMG04" parent="." unique_id=167506660 instance=ExtResource("6_u5sy4")]
+[node name="4SMG04" parent="Game" unique_id=167506660 instance=ExtResource("7_8brng")]
 position = Vector2(-50, -78)
 
-[node name="HitScoreIndicatorsPlaceholder" type="Node2D" parent="." unique_id=831993325]
+[node name="HitScoreIndicatorsPlaceholder" type="Node2D" parent="Game" unique_id=831993325]
 z_index = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=436909266]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1683297587]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=2086372432]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/HBoxContainer" unique_id=1674269641]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/HBoxContainer" unique_id=248921855]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_0tnpc")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer/HBoxContainer" unique_id=1435629281]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Weapon"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/Control/HBoxContainer" unique_id=1298081710]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/HBoxContainer5" unique_id=846640486]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_dinhu")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer/HBoxContainer5" unique_id=1079414842]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Melee"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/Control/HBoxContainer" unique_id=1260707302]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/HBoxContainer4" unique_id=571518217]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_kvpfn")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer/HBoxContainer4" unique_id=1027600991]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Drop"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Control/HBoxContainer" unique_id=433674118]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/HBoxContainer3" unique_id=286218594]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_vtaks")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer/HBoxContainer3" unique_id=192909365]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Jump"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/HBoxContainer" unique_id=463225056]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/HBoxContainer2" unique_id=1558894581]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_gee14")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer/HBoxContainer2" unique_id=143030672]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reload"
