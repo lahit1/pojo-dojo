@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cbl3tsa8nqd44"]
 
 [ext_resource type="Script" uid="uid://dvshciloai7si" path="res://scripts/game/bullet.gd" id="1_5fpda"]
-[ext_resource type="Texture2D" uid="uid://c54giu3bvh27s" path="res://icon.svg" id="1_yhx7a"]
+[ext_resource type="Texture2D" uid="uid://da0brlf3bc1qx" path="res://assets/explosion pack 1/Explosions pack/explosion-1-a/Sprites/explosion-2.png" id="2_8gs27"]
+[ext_resource type="Texture2D" uid="uid://b758tejwpvd0x" path="res://assets/explosion pack 1/Explosions pack/explosion-1-a/Sprites/explosion-3.png" id="3_8gs27"]
 [ext_resource type="AudioStream" uid="uid://b0wtq8bd7xylx" path="res://assets/Snake's SECOND Authentic Gun Sounds/Full Sounds/20 Gauge/20 Gauge Single.wav" id="3_hccwf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l8er"]
@@ -32,8 +33,8 @@ explosion_sound_player = NodePath("GPUParticles2D/ExplosionAudioStreamPlayer2D")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=2001375483]
 z_index = 3
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_yhx7a")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_8gs27")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=19467576]
 shape = SubResource("RectangleShape2D_8l8er")
@@ -42,7 +43,7 @@ shape = SubResource("RectangleShape2D_8l8er")
 z_index = 2
 emitting = false
 amount = 50
-texture = ExtResource("1_yhx7a")
+texture = ExtResource("3_8gs27")
 lifetime = 0.25
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_5fpda")
