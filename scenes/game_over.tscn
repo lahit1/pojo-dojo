@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://je614lgotnuq"]
+
+[ext_resource type="Script" uid="uid://bu6ouylic7jbv" path="res://scripts/game_over.gd" id="1_v3hpu"]
+[ext_resource type="Shader" uid="uid://b2jkjehoy5dy8" path="res://scenes/selector_background.gdshader" id="2_irg28"]
+[ext_resource type="AudioStream" uid="uid://b2eqt0ml82bjw" path="res://assets/DOS-88 Synthwave Music Library/Race to Mars.mp3" id="3_2jtsn"]
+[ext_resource type="AudioStream" uid="uid://c7td2noa83ggh" path="res://assets/DOS-88 Synthwave Music Library/Checking Manifest.mp3" id="4_8bugq"]
+[ext_resource type="AudioStream" uid="uid://cm8hn8vr8ptm0" path="res://assets/DOS-88 Synthwave Music Library/Smooth Sailing.mp3" id="5_wawo4"]
+[ext_resource type="Script" uid="uid://bix5nq886jd8q" path="res://scripts/audio_stream_looper.gd" id="6_56v3a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7m3ot"]
+shader = ExtResource("2_irg28")
+shader_parameter/direction = Vector2(0, -1)
+shader_parameter/speed = 0.2
+shader_parameter/bubble_scale = 1.265
+shader_parameter/aspect_ratio = 1.15
+shader_parameter/pixel_amount = 150.0
+shader_parameter/color_bg = Color(0.99999994, 0.11322755, 0.16187015, 1)
+shader_parameter/color_outer = Color(0.521078, 0.024966804, 0.06620093, 1)
+shader_parameter/color_inner_edge = Color(0.96051854, 0, 0.0751444, 1)
+shader_parameter/color_inside = Color(1, 0.13659069, 0.30715302, 1)
+shader_parameter/threshold_outer = 0.4
+shader_parameter/threshold_inner_edge = 0.65
+shader_parameter/threshold_inside = 0.9
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_6stev"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7ji5i"]
+streams_count = 3
+stream_0/stream = ExtResource("3_2jtsn")
+stream_1/stream = ExtResource("4_8bugq")
+stream_2/stream = ExtResource("5_wawo4")
+
+[node name="Node" type="Node" unique_id=1764238435 node_paths=PackedStringArray("sprite", "label")]
+process_mode = 4
+script = ExtResource("1_v3hpu")
+sprite = NodePath("Control/PlayerPlaceholder2/AnimatedSprite2D")
+label = NodePath("Control/HBoxContainer2/Label")
+
+[node name="Control" type="Control" parent="." unique_id=373841708]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Control" unique_id=1339015983]
+material = SubResource("ShaderMaterial_7m3ot")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = SubResource("Texture2DRD_6stev")
+
+[node name="PlayerPlaceholder2" type="Control" parent="Control" unique_id=280136443]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+pivot_offset_ratio = Vector2(0.5, 0.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/PlayerPlaceholder2" unique_id=517022449]
+process_mode = 3
+scale = Vector2(4, 4)
+flip_h = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1630771139]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.7
+anchor_right = 0.9
+anchor_bottom = 0.8
+alignment = 2
+
+[node name="Winner Label" type="Label" parent="Control/HBoxContainer" unique_id=1926744193]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
+text = "Winner"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control" unique_id=247264714]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.8
+anchor_right = 0.9
+anchor_bottom = 0.9
+alignment = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer2" unique_id=383429243]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
+text = "Player 1"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1373792105]
+process_mode = 3
+stream = SubResource("AudioStreamRandomizer_7ji5i")
+bus = &"Music Bus"
+playback_type = 1
+script = ExtResource("6_56v3a")

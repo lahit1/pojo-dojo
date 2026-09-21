@@ -13,8 +13,8 @@ collision_mask = 2
 script = ExtResource("1_gst13")
 body = NodePath(".")
 sprite = NodePath("Icon")
-max_interaction_damage = 140.0
-min_interaction_damage = 80.0
+max_interaction_damage = 170.0
+min_interaction_damage = 120.0
 sound_player = NodePath("AudioStreamPlayer2D")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=2001375483]

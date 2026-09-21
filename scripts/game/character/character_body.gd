@@ -1,6 +1,8 @@
 class_name CharacterNode
 extends CharacterBody2D
 
+var data: CharacterData
+
 @export var health_bar: ProgressBar:
 	set(npb):
 		health_bar = npb
@@ -251,5 +253,9 @@ func take_damage(val: float) -> void:
 	else:
 		health -= val
 
+	if health == 0:
+		GameOverScene.winner_dat = data
+		GameOverScene.winner_label = "Player 1" if data == GameManager.current_game.character1 else "Player 2"
+		SceneManager.set_scene(SceneManager.SceneT.GameOver)
 	if val:
 		GameManager.current_game.spawn_hit_score(self, val, max_health, global_position)

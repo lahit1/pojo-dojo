@@ -21,6 +21,7 @@ static func emit_to_scene_changed_signal(...args: Array):
 
 
 static var CACHED_SELECTOR_SCENE_INSTANCE: Node
+static var CACHED_GAME_OVER_SCENE_INSTANCE: Node
 # Don't cache game screen
 
 static func set_scene(s: SceneT):
@@ -35,11 +36,17 @@ static func set_scene(s: SceneT):
 		SceneT.Game:
 			queued_scene = preload("res://scenes/game.tscn").instantiate()
 			queued_scene_type = SceneT.Game
+		SceneT.GameOver:
+			if CACHED_GAME_OVER_SCENE_INSTANCE == null:
+				CACHED_GAME_OVER_SCENE_INSTANCE = preload("res://scenes/game_over.tscn").instantiate()
+			queued_scene = CACHED_GAME_OVER_SCENE_INSTANCE
+			queued_scene_type = SceneT.Selector
 		_:
 			push_error("Unkown screen type")
 
 
 enum SceneT {
 	Selector,
-	Game
+	Game,
+	GameOver
 }

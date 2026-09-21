@@ -64,8 +64,8 @@ func _ready() -> void:
 	extinct_timer.timeout.connect(
 		(func():
 			get_parent().remove_child(self)
-			queue_free()
 			total_instance -= 1
+			free()
 			pass).call_deferred
 	)
 

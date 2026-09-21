@@ -36,9 +36,11 @@ func _ready() -> void:
 	set_world(preload("res://scenes/worlds/world.tscn").instantiate())
 
 	var char1 := character1.scene.instantiate()
+	char1.data = character1
 	character_spawner.request_spawn(char1)
 
 	var char2 := character2.scene.instantiate()
+	char2.data = character2
 	character_spawner.request_spawn(char2)
 
 func set_world(world: WorldNode):

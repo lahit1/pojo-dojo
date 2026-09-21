@@ -5,8 +5,6 @@
 [ext_resource type="Script" uid="uid://boa6d3h4ia8aq" path="res://scripts/game/character_spawner.gd" id="3_5dhap"]
 [ext_resource type="Script" uid="uid://f08wpsux6j0c" path="res://scripts/game/camera_aligner.gd" id="4_s427y"]
 [ext_resource type="Script" uid="uid://bb6dniw1rxy3r" path="res://scripts/game/player_controller.gd" id="5_yblbm"]
-[ext_resource type="PackedScene" uid="uid://77fxty1fp4nr" path="res://scenes/weapons/4smg04/4smg04.tscn" id="6_qyh6i"]
-[ext_resource type="PackedScene" uid="uid://cvgvi40fdd61b" path="res://scenes/weapons/5Explosive05/5Explosive05.tscn" id="7_8brng"]
 [ext_resource type="AudioStream" uid="uid://b2eqt0ml82bjw" path="res://assets/DOS-88 Synthwave Music Library/Race to Mars.mp3" id="8_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://c7td2noa83ggh" path="res://assets/DOS-88 Synthwave Music Library/Checking Manifest.mp3" id="9_dinhu"]
 [ext_resource type="AudioStream" uid="uid://cm8hn8vr8ptm0" path="res://assets/DOS-88 Synthwave Music Library/Smooth Sailing.mp3" id="10_kvuet"]
@@ -104,12 +102,6 @@ drop_weapon_action = &"drop2"
 melee_attack_action = &"melee_attack2"
 shoot_weapon_action = &"shoot2"
 metadata/_custom_type_script = "uid://bb6dniw1rxy3r"
-
-[node name="RigidBody2D" parent="Game" unique_id=1929934816 instance=ExtResource("6_qyh6i")]
-position = Vector2(38, -77)
-
-[node name="4SMG04" parent="Game" unique_id=167506660 instance=ExtResource("7_8brng")]
-position = Vector2(-50, -78)
 
 [node name="HitScoreIndicatorsPlaceholder" type="Node2D" parent="Game" unique_id=831993325]
 z_index = 4
