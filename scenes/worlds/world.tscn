@@ -18,7 +18,7 @@ camera_limit_left = -600.0
 camera_limit_top = -420.0
 camera_limit_right = 600.0
 camera_limit_bottom = 420.0
-lucky_blok_spawn_points = [NodePath("Node2D/Marker2D"), NodePath("Node2D/Marker2D2"), NodePath("Node2D/Marker2D3")]
+lucky_blok_spawn_points = [NodePath("Node2D/Marker2D"), NodePath("Node2D/Marker2D2"), NodePath("Node2D/Marker2D3"), NodePath("Node2D/Marker2D3"), NodePath("Node2D/Marker2D4"), NodePath("Node2D/Marker2D5"), NodePath("Node2D/Marker2D6"), NodePath("Node2D/Marker2D7"), NodePath("Node2D/Marker2D8"), NodePath("Node2D/Marker2D9"), NodePath("Node2D/Marker2D10")]
 lucky_blok_spawn_timer = NodePath("Timer")
 
 [node name="ParallaxLayers" type="Node2D" parent="." unique_id=2046986859]
@@ -178,12 +178,33 @@ position = Vector2(172, -154)
 [node name="Node2D" type="Node2D" parent="." unique_id=1310795938]
 
 [node name="Marker2D" type="Marker2D" parent="Node2D" unique_id=245065048]
-position = Vector2(-101, -85)
+position = Vector2(-76, -67)
 
 [node name="Marker2D2" type="Marker2D" parent="Node2D" unique_id=64391886]
 position = Vector2(72, -74)
 
 [node name="Marker2D3" type="Marker2D" parent="Node2D" unique_id=1861799239]
-position = Vector2(-38, -159)
+position = Vector2(-28, -187)
+
+[node name="Marker2D4" type="Marker2D" parent="Node2D" unique_id=376867749]
+position = Vector2(260, -238)
+
+[node name="Marker2D5" type="Marker2D" parent="Node2D" unique_id=1753326164]
+position = Vector2(-211, -200)
+
+[node name="Marker2D6" type="Marker2D" parent="Node2D" unique_id=302507174]
+position = Vector2(-242, -54)
+
+[node name="Marker2D7" type="Marker2D" parent="Node2D" unique_id=787359324]
+position = Vector2(323, -165)
+
+[node name="Marker2D8" type="Marker2D" parent="Node2D" unique_id=1649655697]
+position = Vector2(4, -66)
+
+[node name="Marker2D9" type="Marker2D" parent="Node2D" unique_id=327818063]
+position = Vector2(-116, -191)
+
+[node name="Marker2D10" type="Marker2D" parent="Node2D" unique_id=141983605]
+position = Vector2(119, -251)
 
 [node name="Timer" type="Timer" parent="." unique_id=1399540353]
