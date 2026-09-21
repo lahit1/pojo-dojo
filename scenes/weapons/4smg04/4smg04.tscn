@@ -20,7 +20,8 @@ barrel = NodePath("Barrel")
 ammo_director = NodePath("AmmoDirector")
 bullet_scene = ExtResource("2_ppyta")
 bullet_cooldown = 0.05
-ammo_in_magazine = 30
+magazine_capacity = 12
+ammo_in_magazine = 12
 magazine_change_duration = 0.5
 aim_indicator = NodePath("AmmoDirector/AimIndicator")
 

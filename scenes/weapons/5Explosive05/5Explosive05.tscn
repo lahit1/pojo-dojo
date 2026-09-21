@@ -19,7 +19,8 @@ barrel = NodePath("Barrel")
 ammo_director = NodePath("AmmoDirector")
 bullet_scene = ExtResource("2_4r1b6")
 bullet_cooldown = 2.0
-magazine_capacity = 4
+magazine_capacity = 1
+ammo_in_magazine = 1
 magazine_change_duration = 3.0
 
 [node name="Handle" type="Node2D" parent="." unique_id=489809300]
