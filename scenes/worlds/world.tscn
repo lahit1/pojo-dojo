@@ -11,13 +11,15 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8l8er"]
 distance = -18.0
 
-[node name="World" type="Node2D" unique_id=2065947520 node_paths=PackedStringArray("spawn_points")]
+[node name="World" type="Node2D" unique_id=2065947520 node_paths=PackedStringArray("spawn_points", "lucky_blok_spawn_points", "lucky_blok_spawn_timer")]
 script = ExtResource("1_6e51n")
 spawn_points = [NodePath("Player1"), NodePath("Player2")]
 camera_limit_left = -600.0
 camera_limit_top = -420.0
 camera_limit_right = 600.0
 camera_limit_bottom = 420.0
+lucky_blok_spawn_points = [NodePath("Node2D/Marker2D"), NodePath("Node2D/Marker2D2"), NodePath("Node2D/Marker2D3")]
+lucky_blok_spawn_timer = NodePath("Timer")
 
 [node name="ParallaxLayers" type="Node2D" parent="." unique_id=2046986859]
 position = Vector2(-2, -167)
@@ -172,3 +174,16 @@ position = Vector2(-261, -156)
 
 [node name="Player2" type="Marker2D" parent="." unique_id=533843078]
 position = Vector2(172, -154)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1310795938]
+
+[node name="Marker2D" type="Marker2D" parent="Node2D" unique_id=245065048]
+position = Vector2(-101, -85)
+
+[node name="Marker2D2" type="Marker2D" parent="Node2D" unique_id=64391886]
+position = Vector2(72, -74)
+
+[node name="Marker2D3" type="Marker2D" parent="Node2D" unique_id=1861799239]
+position = Vector2(-38, -159)
+
+[node name="Timer" type="Timer" parent="." unique_id=1399540353]

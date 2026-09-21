@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://mkoncpoq4hm4"]
+
+[ext_resource type="Shader" uid="uid://d0ocu4lg7piio" path="res://assets/lucky_blok.gdshader" id="1_dcdox"]
+[ext_resource type="Texture2D" uid="uid://ucrce8vjd7pq" path="res://assets/lucky_blok.png" id="2_xxo47"]
+[ext_resource type="Script" uid="uid://dk0eeta25w0v" path="res://scripts/lucky_blok.gd" id="3_xxo47"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wlu85"]
+shader = ExtResource("1_dcdox")
+shader_parameter/speed = 1.0
+shader_parameter/frequency = 1.0
+shader_parameter/saturation = 0.6
+shader_parameter/value = 1.0
+shader_parameter/mix_amount = 1.0
+
+[node name="LuckyBlok" type="Sprite2D" unique_id=1112748900 node_paths=PackedStringArray("timer")]
+material = SubResource("ShaderMaterial_wlu85")
+texture = ExtResource("2_xxo47")
+script = ExtResource("3_xxo47")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="." unique_id=499759796]
+one_shot = true
+autostart = true

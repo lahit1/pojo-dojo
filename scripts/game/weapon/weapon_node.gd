@@ -1,7 +1,11 @@
 class_name WeaponNode
 extends Node2D
 
-static var total_instance: int = 0
+static var total_instance: int = 0:
+	set(val):
+		if GameManager.current_world:
+			GameManager.current_world.notify_weapon_count_changed()
+		total_instance = val
 
 @export var body: RigidBody2D
 @export var barrel: Marker2D
