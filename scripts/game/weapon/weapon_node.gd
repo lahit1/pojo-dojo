@@ -1,6 +1,8 @@
 class_name WeaponNode
 extends Node2D
 
+static var total_instance: int = 0
+
 @export var body: RigidBody2D
 @export var barrel: Marker2D
 @export var ammo_director: Marker2D
@@ -10,9 +12,7 @@ extends Node2D
 @export var bullet_life_time: float = 2
 @export var bullet_cooldown: float = 0.1
 
-@export var magazine_capacity: int = 30
-@export var ammo_in_magazine: int = magazine_capacity
-@export var magazine_change_duration: float = 2
+@export var ammo_in_magazine: int = 30
 
 @export var aim_indicator: Node2D:
 	set(value):
@@ -23,7 +23,12 @@ var current_character: CharacterNode
 var direction = 1
 
 var bullet_cooldown_timer: Timer
-var magazine_change_timer: Timer
+var extinct_timer: Timer
+@export var extinct_duration: float = 2.0:
+	set(value):
+		if extinct_timer:
+			extinct_timer.wait_time = value
+			extinct_duration = value
 
 var pickup_cooldown_timer: Timer
 @export var pickup_cooldown_duration: float = 0.35:
@@ -31,6 +36,9 @@ var pickup_cooldown_timer: Timer
 		if pickup_cooldown_timer:
 			pickup_cooldown_timer.wait_time = value
 			pickup_cooldown_duration = value
+
+func _init() -> void:
+	total_instance += 1
 
 func _ready() -> void:
 	body.contact_monitor = true
@@ -46,15 +54,18 @@ func _ready() -> void:
 	bullet_cooldown_timer.one_shot = true
 	add_child(bullet_cooldown_timer)
 
-	magazine_change_timer = Timer.new()
-	magazine_change_timer.wait_time = magazine_change_duration
-	magazine_change_timer.one_shot = true
-	magazine_change_timer.timeout.connect(
-		func():
-			ammo_in_magazine = magazine_capacity
+	extinct_timer = Timer.new()
+	extinct_timer.wait_time = extinct_duration
+	extinct_timer.one_shot = true
+	extinct_timer.timeout.connect(
+		(func():
+			get_parent().remove_child(self)
+			queue_free()
+			total_instance -= 1
+			pass).call_deferred
 	)
 
-	add_child(magazine_change_timer)
+	add_child(extinct_timer)
 
 	pickup_cooldown_timer = Timer.new()
 	pickup_cooldown_timer.wait_time = pickup_cooldown_duration
@@ -62,7 +73,7 @@ func _ready() -> void:
 	add_child(pickup_cooldown_timer)
 
 func pickup(character: CharacterNode):
-	if current_character != null || character.current_weapon != null: return
+	if current_character != null || character.current_weapon != null || ammo_in_magazine == 0: return
 
 	get_parent().remove_child.call_deferred(self)
 	character.weapon_place_holder.add_child.call_deferred(self)
@@ -96,13 +107,14 @@ func drop():
 		aim_indicator.visible = false
 
 	pickup_cooldown_timer.start()
+	
+	if ammo_in_magazine == 0:
+		extinct_timer.start()
 
 func shoot(aim_direction: Vector2 = Vector2.ZERO):
 	if !bullet_cooldown_timer.is_stopped() or not ammo_in_magazine: return
 	bullet_cooldown_timer.start()
 	ammo_in_magazine -= 1
-	if not ammo_in_magazine:
-		magazine_change_timer.start()
 
 	var bullet: RigidBody2D = bullet_scene.instantiate()
 	bullet.character = current_character
