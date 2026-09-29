@@ -75,8 +75,8 @@ hit_score_indicator_rotation_radius_degrees = 60.0
 [node name="CharacterSpawner" type="Node" parent="Game" unique_id=1871654956 node_paths=PackedStringArray("camera_aligner", "player_controller1", "player_controller2")]
 script = ExtResource("3_5dhap")
 camera_aligner = NodePath("../Camera2D")
-player_controller1 = NodePath("../PlayerController")
-player_controller2 = NodePath("../PlayerController2")
+player_controller1 = NodePath("../PlayerController2")
+player_controller2 = NodePath("../PlayerController")
 metadata/_custom_type_script = "uid://boa6d3h4ia8aq"
 
 [node name="Camera2D" type="Camera2D" parent="Game" unique_id=1469216039]
