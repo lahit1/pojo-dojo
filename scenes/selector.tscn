@@ -24,12 +24,11 @@ shader_parameter/threshold_inside = 0.9
 
 [sub_resource type="Texture2DRD" id="Texture2DRD_6stev"]
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_buvdd"]
-button_index = 13
-pressed = true
+[sub_resource type="InputEventAction" id="InputEventAction_w0cra"]
+action = &"move_left"
 
-[sub_resource type="Shortcut" id="Shortcut_puhoh"]
-events = [SubResource("InputEventJoypadButton_buvdd")]
+[sub_resource type="Shortcut" id="Shortcut_jsnsc"]
+events = [SubResource("InputEventAction_w0cra")]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_buvdd"]
 load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
@@ -45,33 +44,31 @@ load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c
 atlas = SubResource("CompressedTexture2D_v6dvc")
 region = Rect2(32, 160, 16, 16)
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_puhoh"]
-button_index = 2
-pressed = true
+[sub_resource type="InputEventAction" id="InputEventAction_buvdd"]
+action = &"accept"
 
-[sub_resource type="Shortcut" id="Shortcut_i8cl7"]
-events = [SubResource("InputEventJoypadButton_puhoh")]
+[sub_resource type="Shortcut" id="Shortcut_puhoh"]
+events = [SubResource("InputEventAction_buvdd")]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_puhoh"]
 load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i8cl7"]
 atlas = SubResource("CompressedTexture2D_puhoh")
-region = Rect2(48, 64, 16, 16)
+region = Rect2(48, 32, 16, 16)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4fnji"]
 load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a0yho"]
 atlas = SubResource("CompressedTexture2D_4fnji")
-region = Rect2(80, 64, 16, 16)
+region = Rect2(80, 32, 16, 16)
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_i8cl7"]
-button_index = 14
-pressed = true
+[sub_resource type="InputEventAction" id="InputEventAction_puhoh"]
+action = &"move_right"
 
-[sub_resource type="Shortcut" id="Shortcut_7hpki"]
-events = [SubResource("InputEventJoypadButton_i8cl7")]
+[sub_resource type="Shortcut" id="Shortcut_i8cl7"]
+events = [SubResource("InputEventAction_puhoh")]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i8cl7"]
 load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c3264abe.ctex"
@@ -87,21 +84,23 @@ load_path = "res://.godot/imported/controller_xbox.png-85f06fa383b88f1cf23b9bf5c
 atlas = SubResource("CompressedTexture2D_a0yho")
 region = Rect2(64, 160, 16, 16)
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_v6dvc"]
-device = 1
-button_index = 13
-pressed = true
+[sub_resource type="InputEventAction" id="InputEventAction_i8cl7"]
+action = &"move_left2"
 
-[sub_resource type="Shortcut" id="Shortcut_buvdd"]
-events = [SubResource("InputEventJoypadButton_v6dvc")]
+[sub_resource type="Shortcut" id="Shortcut_4fnji"]
+events = [SubResource("InputEventAction_i8cl7")]
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_4fnji"]
-device = 1
-button_index = 2
-pressed = true
+[sub_resource type="InputEventAction" id="InputEventAction_v6dvc"]
+action = &"accept2"
 
-[sub_resource type="Shortcut" id="Shortcut_v6dvc"]
-events = [SubResource("InputEventJoypadButton_4fnji")]
+[sub_resource type="Shortcut" id="Shortcut_a0yho"]
+events = [SubResource("InputEventAction_v6dvc")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_4fnji"]
+action = &"move_right2"
+
+[sub_resource type="Shortcut" id="Shortcut_7hpki"]
+events = [SubResource("InputEventAction_4fnji")]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7ji5i"]
 streams_count = 3
@@ -194,7 +193,7 @@ alignment = 1
 process_mode = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-shortcut = SubResource("Shortcut_puhoh")
+shortcut = SubResource("Shortcut_jsnsc")
 texture_normal = SubResource("AtlasTexture_puhoh")
 texture_pressed = SubResource("AtlasTexture_4fnji")
 stretch_mode = 5
@@ -213,7 +212,7 @@ process_mode = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 toggle_mode = true
-shortcut = SubResource("Shortcut_i8cl7")
+shortcut = SubResource("Shortcut_puhoh")
 texture_normal = SubResource("AtlasTexture_i8cl7")
 texture_pressed = SubResource("AtlasTexture_a0yho")
 stretch_mode = 5
@@ -231,7 +230,7 @@ alignment = 1
 process_mode = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-shortcut = SubResource("Shortcut_7hpki")
+shortcut = SubResource("Shortcut_i8cl7")
 texture_normal = SubResource("AtlasTexture_v6dvc")
 texture_pressed = SubResource("AtlasTexture_7hpki")
 stretch_mode = 5
@@ -258,7 +257,7 @@ alignment = 1
 process_mode = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-shortcut = SubResource("Shortcut_buvdd")
+shortcut = SubResource("Shortcut_4fnji")
 texture_normal = SubResource("AtlasTexture_puhoh")
 texture_pressed = SubResource("AtlasTexture_4fnji")
 stretch_mode = 5
@@ -277,7 +276,7 @@ process_mode = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 toggle_mode = true
-shortcut = SubResource("Shortcut_v6dvc")
+shortcut = SubResource("Shortcut_a0yho")
 texture_normal = SubResource("AtlasTexture_i8cl7")
 texture_pressed = SubResource("AtlasTexture_a0yho")
 stretch_mode = 5
