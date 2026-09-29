@@ -27,5 +27,4 @@ shape = SubResource("RectangleShape2D_8l8er")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1471876648]
 stream = ExtResource("3_jsnsc")
-volume_db = -7.776
 bus = &"Game Bus"
