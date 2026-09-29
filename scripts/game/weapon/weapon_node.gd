@@ -147,3 +147,6 @@ func shoot(aim_direction: Vector2 = Vector2.ZERO):
 	bullet.add_child(timer)
 	GameManager.current_world.add_child.call_deferred(bullet)
 	timer.start.call_deferred()
+	if ammo_in_magazine == 0:
+		drop.call_deferred()
+		pass
