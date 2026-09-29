@@ -254,8 +254,8 @@ func take_damage(val: float) -> void:
 		health -= val
 
 	if health == 0:
-		GameOverScene.winner_dat = data
-		GameOverScene.winner_label = "Player 1" if data == GameManager.current_game.character1 else "Player 2"
+		GameOverScene.winner_dat = GameManager.current_game.character2 if data == GameManager.current_game.character1 else GameManager.current_game.character1
+		GameOverScene.winner_label = "Player 2" if data == GameManager.current_game.character1 else "Player 1"
 		SceneManager.set_scene(SceneManager.SceneT.GameOver)
 	if val:
 		GameManager.current_game.spawn_hit_score(self, val, max_health, global_position)
