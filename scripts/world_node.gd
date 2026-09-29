@@ -19,6 +19,7 @@ func _ready() -> void:
 	reset_lucky_blok_spawn_timer()
 	lucky_blok_spawn_timer.timeout.connect(
 		(func():
+			if WeaponNode.total_instance > max_lucky_blok_dublet_count * 2: return
 			var relative_pos = lucky_blok_spawn_points.pick_random().position - position
 			var scene: Node2D = preload("res://scenes/lucky_blok.tscn").instantiate()
 			scene.position = relative_pos
