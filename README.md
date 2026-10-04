@@ -11,18 +11,18 @@ This repo is dedicated to my university club, the [Işık IEEE Student Branch](h
 - 15 different characters
 - 10 different weapons
 - 1 map
-## Screen Captures
-
 
 ### Character Selection Screen
-![Character Selection Screen](https://lh3.googleusercontent.com/d/11gexPVNodAxR5pC3ZSOC04eT90pojG3I)
+![Character Selection Screen](./captures/selector_scene.gif)
 
 ### Inside The Game
-![In Game Capture 1](https://lh3.googleusercontent.com/d/1BwqMmVPSzJKx8PgujX27Gbs2FxUR7Zq5)
+![In Game Capture 1](./captures/in_game_1.gif)
 
-![In Game Capture 2](https://lh3.googleusercontent.com/d/1MIpkJpZ8sed0VFkCXcRA8XeNv-P0r_dW)
+![In Game Capture 2](./captures/in_game_2.gif)
 
-![In Game Capture 2](https://lh3.googleusercontent.com/d/1At0ean2VaHX6VsPWtMUi4cfLxtIDKeGj)
+### Lucky Block
+![Lucky Block](./captures/lucky_block.gif)
+
 ## 🔗 Let's Connect
 [![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/naifcanbasci)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/naifcanbasci)
