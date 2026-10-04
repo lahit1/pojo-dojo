@@ -31,3 +31,7 @@ This repo is dedicated to my university club, the [Işık IEEE Student Branch](h
 
 ### Lucky Block
 ![Lucky Block](./captures/lucky_block.gif)
+
+## License
+
+You can access the "GNU  GNU GENERAL PUBLIC LICENSE V3" license from [ here ](./LICENSE).
