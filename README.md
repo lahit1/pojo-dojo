@@ -1,3 +1,6 @@
+[![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/naifcanbasci)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/naifcanbasci)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto://naifcanbasci@gmail.com)
 
 # Pojo Dojo: The Game
 
@@ -28,10 +31,3 @@ This repo is dedicated to my university club, the [Işık IEEE Student Branch](h
 
 ### Lucky Block
 ![Lucky Block](./captures/lucky_block.gif)
-
-## 🔗 Let's Connect
-[![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/naifcanbasci)
-[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/naifcanbasci)
-[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto://naifcanbasci@gmail.com)
-
-
