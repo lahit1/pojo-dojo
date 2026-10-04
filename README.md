@@ -12,6 +12,12 @@ This repo is dedicated to my university club, the [Işık IEEE Student Branch](h
 - 10 different weapons
 - 1 map
 
+## Rules
+- Every weapon has one magazine
+- If magazine finished, character automaticly drops it.
+- Weapons with empty magazines are extinct (get consumed) and disappears from map from a little delay.
+- There's 4 weapon limit, you need to "consume" weapons to get new ones from lucky boxes.
+
 ### Character Selection Screen
 ![Character Selection Screen](./captures/selector_scene.gif)
 
